@@ -15,7 +15,12 @@ let loader;
 main();
 
 function setup() {
-    console.log("Setup time!")
+    console.log("Setup time!");
+    loader.atlasID = loader.DASH_ATLAS;
+    playArea.setSize(loader._id[loader.ASSET_BG].orig.width,
+                     loader._id[loader.ASSET_BG].orig.height);
+
+    playArea.addSomething(new PIXI.Sprite(loader._id[loader.ASSET_BG]));
 
 }
 
@@ -23,10 +28,9 @@ function setup() {
 
 
 function main() {
-    //Create our canvas!
     playArea = new PlayArea();
     loader = new Loader();
     
-    
+    playArea.placePlayArea(gameDiv);
     loader.load(setup);
 }

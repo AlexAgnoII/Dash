@@ -6,7 +6,9 @@ This is for loading the assets required.
 
 function Loader() {
     this._pixiLoader = PIXI.loader;
-    this.DASH_ATLAS = "assets/dashAtlast.png";
+    this._id; //For atlas.
+    //////////////////////////////////////////
+    this.DASH_ATLAS = "assets/dashAtlast.json";
     this.ASSET_TILE = "assets/tile.png";
     this.ASSET_DASH = "assets/dash.png";
     this.ASSET_BG = "bg.png";
@@ -24,15 +26,20 @@ function Loader() {
 }
 
 Loader.prototype.load = function(callBack) {
-    
     this._pixiLoader.add([this.DASH_ATLAS,
                           this.ASSET_TILE,
                           this.ASSET_DASH])
                     .load(callBack);
 }
 
-
-
-
-
-
+/*
+Set: Sets the atlast ID.
+*/
+Object.defineProperty(Loader.prototype, "atlasID", {
+    set: function(atlas) {
+        this._id = this._pixiLoader.resources[atlas].textures; 
+    },
+    get: function(){
+        return this._id;
+    }
+})
