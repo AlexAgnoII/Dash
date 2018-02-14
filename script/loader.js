@@ -22,7 +22,7 @@ function Loader() {
     this.ASSET_SPIKE_UP = "spike0001.png";
     this.ASSET_SPIKE_DOWN = "spike0002.png";
     this.ASSET_TITLE = "title.png";
-    this.ASSET_YOU_WIN = "youwin";
+    this.ASSET_YOU_WIN = "youwin.png";
 }
 
 Loader.prototype.load = function(callBack) {

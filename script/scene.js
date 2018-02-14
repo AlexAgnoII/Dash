@@ -8,6 +8,7 @@ function Scene() {
     this._tutorialScene = new PIXI.Container();
     this._playScene = new PIXI.Container();
     this._endScene = new PIXI.Container();
+    this._endMessage;
     
     this.initializeTitle = 
         function(playArea, loader) {
@@ -64,8 +65,6 @@ function Scene() {
             standingPlayer.x = -standingPlayer.width;
             standingPlayer.y = standingPlayer.height/2;
             this._tutorialScene.addChild(standingPlayer);
-          
-            
         
             this._tutorialScene.visible = false;
         }
@@ -77,13 +76,46 @@ function Scene() {
     
     this.initializeEnd = 
         function(playArea, loader) {
+            this._endScene.position.set(playArea._app.renderer.width/2,
+                                             playArea._app.renderer.height/2);
+            this._endScene.pivot.x = this._endScene.width/2;
+            this._endScene.pivot.y = this._endScene.height/2;
+            this._endScene.alpha = 0;
             playArea._app.stage.addChild(this._endScene);
+        
+            this._endMessage = new PIXI.Sprite(loader._id[loader.ASSET_GAME_OVER]);
+            this._endMessage.anchor.set(0.5,0.5);
+            this._endMessage.y = -this._endMessage.height/2
+            this._endScene.addChild(this._endMessage);
+        
+            let infoText = new PIXI.Sprite(loader._id[loader.ASSET_INFO_3]);
+            infoText.anchor.set(0.5,0.5);
+            infoText.y = infoText.height*3;
+            charm.pulse(infoText, 60, 0.2);
+            this._endScene.addChild(infoText);
+        
+            this._endScene.visible = false;
+            
         }
 }
 
 
 Scene.prototype.showScene = function(aScene, show) {
     aScene.visible = show;
+}
+
+Scene.prototype.changeEndMessage = function(win, loader) {
+    console.log(this._endMessage.texture)
+    console.log(loader._id[loader.ASSET_GAME_OVER])
+    console.log(loader._id[loader.ASSET_YOU_WIN])
+    if(win) {
+        this._endMessage.texture = loader._id[loader.ASSET_YOU_WIN];
+    }
+    
+    else {
+        this._endMessage.texture = loader._id[loader.ASSET_GAME_OVER];
+    }
+    
 }
 
 

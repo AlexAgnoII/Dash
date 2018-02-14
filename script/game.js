@@ -9,6 +9,7 @@ let playArea;
 let loader;
 let scene;
 let state;
+let win = false;
 
 
 let charm = new Charm(PIXI);
@@ -67,20 +68,28 @@ function title() {
 
 function tutorial() {
     console.log("tutorial state")
-
     if(scene._tutorialScene.visible == false) {
-        console.log(scene._tutorialScene.visible);
         scene.showScene(scene._tutorialScene, true);
         charm.fadeIn(scene._tutorialScene, 30);
     }
 }
 
 function play() {
-    console.log("Play state")
+    if(scene._playScene.visible == false) {
+        scene.showScene(scene._playScene, true);
+        charm.fadeIn(scene._playScene, 30);
+    }
 }
 
 function end() {
     console.log("End state")
+    console.log(scene._endScene.visible)
+    if(scene._endScene.visible == false) {
+        scene.showScene(scene._endScene, true);
+        scene.changeEndMessage(win, loader);
+        charm.fadeIn(scene._endScene, 30);
+        
+    }
 }
 
 
@@ -115,8 +124,13 @@ document.body.onkeyup = function(e){
                  }
         
                  else if(state == play){
-                    console.log("STATE IS PLAY")
-                     state = end;
+                     console.log("STATE IS PLAY")
+                     
+                     //TEMPORARY
+                     charm.fadeOut(scene._playScene, 30).onComplete = () => {
+                         scene.showScene(scene._playScene, false);
+                         state = end;
+                     };
                  }
                 
                  //end        
