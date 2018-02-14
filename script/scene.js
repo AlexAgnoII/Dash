@@ -20,12 +20,12 @@ function Scene() {
             
             let titleLogo = new PIXI.Sprite(loader._id[loader.ASSET_TITLE]);
             titleLogo.anchor.set(0.5,0.5);
-            titleLogo.y = -titleLogo.height/2;
+            titleLogo.y = -titleLogo.height/3;
             this._titleScene.addChild(titleLogo);
         
             let pressAnyToCont = new PIXI.Sprite(loader._id[loader.ASSET_INFO_2]);
             pressAnyToCont.anchor.set(0.5,0.5);
-            pressAnyToCont.y = pressAnyToCont.height*2;
+            pressAnyToCont.y = pressAnyToCont.height*3;
             charm.pulse(pressAnyToCont, 60, 0.2);
             this._titleScene.addChild(pressAnyToCont);
 
@@ -35,11 +35,23 @@ function Scene() {
     
     this.initializeTutorial = 
         function(playArea, loader) {
-            this._tutorialScene.set(playArea._app.renderer.width/2,
-                                    playArea._app.renderer.height/2);
-            this._tutorialScene.x = this._tutorialScene.width/2;
-            this._tutorialScene = this._tutorialScene.height/2;
+            this._tutorialScene.position.set(playArea._app.renderer.width/2,
+                                             playArea._app.renderer.height/2);
+            this._tutorialScene.pivot.x = this._tutorialScene.width/2;
+            this._tutorialScene.pivot.y = this._tutorialScene.height/2;
             this._tutorialScene.alpha = 0;
+            playArea._app.stage.addChild(this._tutorialScene);
+        
+            let controls = new PIXI.Sprite(loader._id[loader.ASSET_CONTROLS]);
+            controls.anchor.set(0.5,0.5);
+            this._tutorialScene.addChild(controls);
+        
+            let pressAnyToStart = new PIXI.Sprite(loader._id[loader.ASSET_INFO_1]);
+            pressAnyToStart.anchor.set(0.5,0.5);
+            pressAnyToStart.y = pressAnyToStart.height*3;
+            this._tutorialScene.addChild(pressAnyToStart);
+        
+            this._tutorialScene.visible = false;
         }
     
     this.initializePlay= 
@@ -54,16 +66,10 @@ function Scene() {
 }
 
 
-Scene.prototype.showTitle = function(show) {
-    this._titleScene.visible = show;
+Scene.prototype.showScene = function(aScene, show) {
+    aScene.visible = show;
 }
 
-Scene.prototype.showPlay = function(show) {
-    this._playScene.visible = show;
-}
-Scene.prototype.showEnd = function(show) {
-    this._showEnd.visible = show;
-}
 
 
 
