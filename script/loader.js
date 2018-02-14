@@ -1,6 +1,6 @@
 "use strict"
 /*
-This is for loading the assets required.
+This is responsible for gathering the assets needed.
 */
 
 

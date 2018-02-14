@@ -26,3 +26,4 @@ PlayArea.prototype.addSomething = function(sprite) {
 PlayArea.prototype.removeSomething = function(sprite) {
     this._app.stage.removeChild(sprite);
 }
+

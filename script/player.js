@@ -3,3 +3,6 @@
 Responsible for the player.
 */
 
+function Player() {
+    
+}

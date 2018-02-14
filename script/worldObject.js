@@ -5,3 +5,8 @@ Responsible for the tiles generated in the world.
 - dmg Tiles (What users can NOT stand on)
 - door
 */
+
+
+function WorldObject() {
+
+}
