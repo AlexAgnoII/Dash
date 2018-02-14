@@ -9,6 +9,7 @@ function Player(playerStill /*, playerAnimated*/) {
     this._playerAnimated /*= playerAnimated*/;
     this._xVelocity = 0;
     this._yVelocity = 0
+    this._speed = 5;
 }
 
 
@@ -22,6 +23,10 @@ Player.prototype.moveRight = function() {
 }
 
 Player.prototype.jump = function() {
+    
+}
+
+Player.prototype.still = function() {
     
 }
 

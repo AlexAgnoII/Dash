@@ -10,6 +10,7 @@ let loader;
 let scene;
 let state;
 let win = false;
+let player;
 
 
 let charm = new Charm(PIXI);
@@ -37,7 +38,8 @@ function setup() {
     console.log("Setup time!");
     loader.atlasID = loader.DASH_ATLAS;
     
-    playArea.setSize(loader._id[loader.ASSET_BG].orig.width,loader._id[loader.ASSET_BG].orig.height);
+    playArea.setSize(loader._id[loader.ASSET_BG].orig.width,
+                     loader._id[loader.ASSET_BG].orig.height);
     playArea.addSomething(new PIXI.Sprite(loader._id[loader.ASSET_BG]));
     
     scene = new Scene();
@@ -45,6 +47,11 @@ function setup() {
     scene.initializeTutorial(playArea, loader, findNode(xmlDoc.getElementsByTagName("SubTexture"), "stand"));
     scene.initializePlay(playArea, loader);
     scene.initializeEnd(playArea, loader);
+    
+    //Initialize player and add to first level of play
+    player = new Player(); //need to add sprite here.
+
+
     
     state = title;
     
@@ -162,8 +169,8 @@ document.body.onkeyup = function(e){
 /* Given list of SubTexture node, find this specific node given the name.
 */
 function findNode(nodeList, name) {
-    console.log("meow")
-    console.log(nodeList.length)
+//    console.log("meow")
+//    console.log(nodeList.length)
     for(let i = 0; i < nodeList.length; i++) {
         if(nodeList[i].getAttribute("name") == name) {
             console.log("found!")
