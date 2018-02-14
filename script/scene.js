@@ -9,6 +9,7 @@ function Scene() {
     this._playScene = new PIXI.Container();
     this._endScene = new PIXI.Container();
     this._endMessage;
+    this._playWall = []; //Walls that holds the room.
     
     this.initializeTitle = 
         function(playArea, loader) {
@@ -71,7 +72,55 @@ function Scene() {
     
     this.initializePlay= 
         function(playArea, loader) {
-            playArea._app.stage.addChild(this._endScene);
+
+            //this._playScene.alpha = 0;
+            playArea._app.stage.addChild(this._playScene);
+            
+        
+            //set walls
+            //40x40 of 20x20 tiles.
+            //= 800 sq.
+            //the first and last row and column are our walls.
+            //so our playing field is from 1 to size-1 index. (0 and size-1 is reserved for walls)
+            //= real playing field: 760x760;
+            //so its going to be
+            let size = 20;
+            let xReal = 0;
+            let yReal;
+            for(let  x = 0; x < size*2; x++) {
+                yReal = 0;
+                
+                for(let y = 0; y < size*2; y++) {
+                    //
+                   if(x == 0 || (x == size*2 - 1 ) ||
+                      y == 0 || (y == size*2 - 1)) {
+                        let rect = new PIXI.Graphics();
+                        rect.beginFill(0x66CCFF);
+                        rect.drawRect(xReal, yReal, size, size);
+                        rect.endFill();
+                        this._playScene.addChild(rect);
+                        this._playWall.push(rect);
+                    }
+
+                    yReal+= size;
+                }
+                
+                xReal += size;
+            }
+        
+            let rectangle = new PIXI.Graphics();
+            rectangle.beginFill(0xFFFFFF);
+            rectangle.drawRect(500, 500, 100, 100);
+            this._playScene.addChild(rectangle);
+
+
+        
+            this._playScene.position.set(playArea._app.renderer.width/2,
+                                             playArea._app.renderer.height/2);
+            this._playScene.pivot.x = this._playScene.width/2;
+            this._playScene.pivot.y = this._playScene.height/2;
+            
+            this._playScene.visible = false;
         }
     
     this.initializeEnd = 

@@ -77,7 +77,7 @@ function tutorial() {
 function play() {
     if(scene._playScene.visible == false) {
         scene.showScene(scene._playScene, true);
-        charm.fadeIn(scene._playScene, 30);
+        //charm.fadeIn(scene._playScene, 30);
     }
 }
 
@@ -127,10 +127,10 @@ document.body.onkeyup = function(e){
                      console.log("STATE IS PLAY")
                      
                      //TEMPORARY
-                     charm.fadeOut(scene._playScene, 30).onComplete = () => {
+                     //charm.fadeOut(scene._playScene, 30).onComplete = () => {
                          scene.showScene(scene._playScene, false);
                          state = end;
-                     };
+                     //};
                  }
                 
                  //end        
@@ -141,6 +141,21 @@ document.body.onkeyup = function(e){
                     }
                    
                  }
+                break;
+        case 38:if(state == play) {
+            
+                }    
+                break;
+        case 39: /*right*/ 
+                 if(state == play) {
+                    console.log("right")
+                  }    
+                  break;
+        case 37: /*left*/  
+                if(state == play) {
+                    console.log("left")
+                }
+                break;
     }
 }
 
