@@ -135,7 +135,11 @@ document.body.onkeyup = function(e){
                 
                  //end        
                  else {
-                    state = title;
+                    charm.fadeOut(scene._endScene, 30).onComplete = () => {
+                        scene.showScene(scene._endScene, false);
+                        state = title;
+                    }
+                   
                  }
     }
 }
