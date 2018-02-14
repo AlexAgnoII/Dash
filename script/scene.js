@@ -57,15 +57,7 @@ function Scene() {
 Scene.prototype.showTitle = function(show) {
     this._titleScene.visible = show;
 }
-Scene.prototype.fadeInTitle = function(fadeIn) {
-    if(fadeIn)
-        charm.fadeIn(this._titleScene, 30)
-    else {
-        charm.fadeOut(this._titleScene, 30).onComplete = () => {
-            console.log("done");
-        }
-    }
-}
+
 Scene.prototype.showPlay = function(show) {
     this._playScene.visible = show;
 }

@@ -44,8 +44,12 @@ function title() {
 
     if(scene._titleScene.visible == false) {
         scene.showTitle(true);
-        scene.fadeInTitle(true);
+        charm.fadeIn(scene._titleScene, 80);
     }
+}
+
+function tutorial() {
+    console.log("tutorial state")
 }
 
 function play() {
@@ -68,9 +72,28 @@ function main() {
 }
 
 document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        if(state == title) {
-            scene.fadeInTitle(false);
-        }
+    switch(e.keyCode) {
+        case 32: if(state == title) {
+                    console.log("STATE IS TITLE")
+
+                    charm.fadeOut(scene._titleScene, 30).onComplete = () => {
+                        state = tutorial;
+                    }
+                 }
+        
+                 else if(state == tutorial) {
+                     console.log("STATE IS TUTORIAL")
+
+                 }
+        
+                 else if(state == play){
+
+                 }
+                
+                 //end        
+                 else {
+
+                 }
     }
+
 }
