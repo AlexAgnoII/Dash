@@ -34,7 +34,7 @@ function Scene() {
         }
     
     this.initializeTutorial = 
-        function(playArea, loader) {
+        function(playArea, loader, standPlayer) {
             this._tutorialScene.position.set(playArea._app.renderer.width/2,
                                              playArea._app.renderer.height/2);
             this._tutorialScene.pivot.x = this._tutorialScene.width/2;
@@ -49,7 +49,23 @@ function Scene() {
             let pressAnyToStart = new PIXI.Sprite(loader._id[loader.ASSET_INFO_1]);
             pressAnyToStart.anchor.set(0.5,0.5);
             pressAnyToStart.y = pressAnyToStart.height*3;
+            charm.pulse(pressAnyToStart, 60, 0.2);
             this._tutorialScene.addChild(pressAnyToStart);
+        
+            let rectangle = new PIXI.Rectangle(standPlayer.getAttribute("x"),
+                                               standPlayer.getAttribute("y"),
+                                               standPlayer.getAttribute("width"),
+                                               standPlayer.getAttribute("height"));
+            let texture = PIXI.utils.TextureCache[loader.ASSET_DASH];
+            texture.frame = rectangle;
+            let standingPlayer = new PIXI.Sprite(texture);
+            standingPlayer.scale.set(3,3)
+            standingPlayer.anchor.set(0.5,0.5);
+            standingPlayer.x = -standingPlayer.width;
+            standingPlayer.y = standingPlayer.height/2;
+            this._tutorialScene.addChild(standingPlayer);
+          
+            
         
             this._tutorialScene.visible = false;
         }
@@ -69,7 +85,6 @@ function Scene() {
 Scene.prototype.showScene = function(aScene, show) {
     aScene.visible = show;
 }
-
 
 
 

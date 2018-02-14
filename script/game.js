@@ -41,7 +41,7 @@ function setup() {
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
-    scene.initializeTutorial(playArea, loader);
+    scene.initializeTutorial(playArea, loader, findNode(xmlDoc.getElementsByTagName("SubTexture"), "stand"));
     scene.initializePlay(playArea, loader);
     scene.initializeEnd(playArea, loader);
     
@@ -89,7 +89,7 @@ function end() {
 function main() {
     playArea = new PlayArea();
     loader = new Loader();
-    
+
     playArea.placePlayArea(gameDiv);
     loader.load(setup);
 }
@@ -116,6 +116,7 @@ document.body.onkeyup = function(e){
         
                  else if(state == play){
                     console.log("STATE IS PLAY")
+                     state = end;
                  }
                 
                  //end        
@@ -123,5 +124,19 @@ document.body.onkeyup = function(e){
                     state = title;
                  }
     }
+}
 
+/* Given list of SubTexture node, find this specific node given the name.
+*/
+function findNode(nodeList, name) {
+    console.log("meow")
+    console.log(nodeList.length)
+    for(let i = 0; i < nodeList.length; i++) {
+        if(nodeList[i].getAttribute("name") == name) {
+            console.log("found!")
+            return nodeList[i];
+        }
+    }
+    
+    return null;
 }
