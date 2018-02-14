@@ -123,13 +123,13 @@ document.body.onkeyup = function(e){
 
                  }
         
-                 else if(state == play){
+                 else if(state == play){ //Jump
                      console.log("STATE IS PLAY")
                      
                      //TEMPORARY
                      //charm.fadeOut(scene._playScene, 30).onComplete = () => {
-                         scene.showScene(scene._playScene, false);
-                         state = end;
+//                         scene.showScene(scene._playScene, false);
+//                         state = end;
                      //};
                  }
                 
