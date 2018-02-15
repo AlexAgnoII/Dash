@@ -44,12 +44,12 @@ function setup() {
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
-    scene.initializeTutorial(playArea, loader, findNode(xmlDoc.getElementsByTagName("SubTexture"), "stand"));
+    scene.initializeTutorial(playArea, loader, getStillPlayer());
     scene.initializePlay(playArea, loader);
     scene.initializeEnd(playArea, loader);
     
     //Initialize player and add to first level of play
-    player = new Player(); //need to add sprite here.
+    player = new Player(getStillPlayer()); //need to add sprite here.   
 
 
     
@@ -179,4 +179,17 @@ function findNode(nodeList, name) {
     }
     
     return null;
+}
+
+//Returns a still player
+function getStillPlayer() {
+    let xml = findNode(xmlDoc.getElementsByTagName("SubTexture"), "stand");
+    
+    let rectangle = new PIXI.Rectangle(xml.getAttribute("x"),
+                                               xml.getAttribute("y"),
+                                               xml.getAttribute("width"),
+                                               xml.getAttribute("height"));
+    let texture = PIXI.utils.TextureCache[loader.ASSET_DASH];
+    texture.frame = rectangle;
+    return texture;
 }

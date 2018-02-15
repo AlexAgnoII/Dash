@@ -53,14 +53,8 @@ function Scene() {
             pressAnyToStart.y = pressAnyToStart.height*3;
             charm.pulse(pressAnyToStart, 60, 0.2);
             this._tutorialScene.addChild(pressAnyToStart);
-        
-            let rectangle = new PIXI.Rectangle(standPlayer.getAttribute("x"),
-                                               standPlayer.getAttribute("y"),
-                                               standPlayer.getAttribute("width"),
-                                               standPlayer.getAttribute("height"));
-            let texture = PIXI.utils.TextureCache[loader.ASSET_DASH];
-            texture.frame = rectangle;
-            let standingPlayer = new PIXI.Sprite(texture);
+            
+            let standingPlayer = new PIXI.Sprite(standPlayer);
             standingPlayer.scale.set(3,3)
             standingPlayer.anchor.set(0.5,0.5);
             standingPlayer.x = -standingPlayer.width;

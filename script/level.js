@@ -7,6 +7,6 @@ Responsible for the tiles generated in the world.
 */
 
 
-function WorldObject() {
-
+function Level(levelList) {
+    this._levelList = levelList;
 }

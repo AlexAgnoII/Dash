@@ -5,7 +5,7 @@ Responsible for the player.
 
 function Player(playerStill /*, playerAnimated*/) {
     this._jumping = false;
-    this._playerStill = playerStill;
+    this._playerStill = new PIXI.Sprite(playerStill);
     this._playerAnimated /*= playerAnimated*/;
     this._xVelocity = 0;
     this._yVelocity = 0
@@ -15,11 +15,11 @@ function Player(playerStill /*, playerAnimated*/) {
 
 
 Player.prototype.moveLeft = function() {
-    
+    this.xVelocity = -speed;
 }
 
 Player.prototype.moveRight = function() {
-    
+    this.xVelocity = speed;
 }
 
 Player.prototype.jump = function() {
@@ -27,6 +27,13 @@ Player.prototype.jump = function() {
 }
 
 Player.prototype.still = function() {
+    this.xVelocity = 0;
+}
+
+Player.prototype.move = function() {
+    //temporary
+    this._playerStill.x += this._xVelocity;
+    this._playerStill.y += this._yVelocity;
     
 }
 
