@@ -154,10 +154,10 @@ document.body.onkeyup = function(e){
 
 document.body.onkeydown = function(e) {
      if(state == play) {
-        console.log("Working")
         switch(e.keyCode) {
-            case 32: if(player.jumpBool == false) {
-                        player.jumpBool = true;
+            case 32: console.log(player.jumpBool); 
+                    if(player.jumpBool == false) {
+                        player.jump();
                      }
                      break;    
             case 38: 

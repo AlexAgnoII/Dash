@@ -9,7 +9,9 @@ function Player(playerStill, playerAnimated) {
     this._playerAnimated = playerAnimated;
     this._xVelocity = 0;
     this._yVelocity = 0;
-    this._speed = 5;
+    this._speed = 4;
+    this._apech = 150;
+    this._origJumpPoint;
 }
 
 
@@ -17,22 +19,27 @@ function Player(playerStill, playerAnimated) {
 Player.prototype.moveLeft = function() {
     this._playerStill.scale.x = -1;
     this._playerAnimated.scale.x = -1;
-    this._xVelocity = -this._speed;
     this._playerStill.visible = false;
     this._playerAnimated.visible = true;
+    
+   this._xVelocity = -this._speed;
 
 }
 
 Player.prototype.moveRight = function() {
     this._playerStill.scale.x = 1;
     this._playerAnimated.scale.x = 1;
-    this._xVelocity = this._speed;
     this._playerStill.visible = false;
     this._playerAnimated.visible = true;
+    
+   this._xVelocity = this._speed;
+
 }
 
 Player.prototype.jump = function() {
-    this._yVelocity = this._speed;
+    this._yVelocity = -5;
+    this._origJumpPoint = this._playerStill.y;
+    this._jumping = true;
 }
 
 Player.prototype.still = function() {
@@ -46,6 +53,15 @@ Player.prototype.move = function() {
     this._playerStill.y += this._yVelocity;
     this._playerAnimated.x = this._playerStill.x;
     this._playerAnimated.y = this._playerStill.y;
+    
+
+    if(this._apech == (this._origJumpPoint - this._playerStill.y)) {
+        this._yVelocity = 5;
+    }
+    if(this._jumping == true && this._origJumpPoint == this._playerStill.y) {
+        this._jumping = false;
+    }
+
     
 }
 
