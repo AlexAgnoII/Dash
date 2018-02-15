@@ -14,29 +14,15 @@ let player;
 
 
 let charm = new Charm(PIXI);
+let bump = new Bump(PIXI);
 
-let xmlDoc, xmlhttp;
-const xmlFile = "xml/dash.xml";
-
-if(window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-}
-else {
-    xmlhttp = new ActiveXObject("Microsoft.XMLDOM");
-}
-xmlhttp.open("GET", xmlFile, false);
-xmlhttp.send();
-xmlDoc = xmlhttp.responseXML;
-
-
-if(xmlDoc != null) {
-    console.log("Read");
-    main();
-}
+main();
 
 function setup() {
     console.log("Setup time!");
     loader.atlasID = loader.DASH_ATLAS;
+    loader.animID = loader.DASH_ANIMATION_ATLAS;
+
     
     playArea.setSize(loader._id[loader.ASSET_BG].orig.width,
                      loader._id[loader.ASSET_BG].orig.height);
@@ -44,12 +30,16 @@ function setup() {
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
-    scene.initializeTutorial(playArea, loader, getStillPlayer());
+    scene.initializeTutorial(playArea, loader);
     scene.initializePlay(playArea, loader);
     scene.initializeEnd(playArea, loader);
     
     //Initialize player and add to first level of play
-    player = new Player(getStillPlayer()); //need to add sprite here.   
+    player = new Player(loader.animID["stand"], runningAnimation()); //need to add sprite here. 
+    player.setAnchorAnim(0.5,0.6);
+    player.setAnchorStill(0.5,0.5);
+    scene.addtoPlayScene(player._playerStill, 400,400);
+    scene.addtoPlayScene(player._playerAnimated, 400,400);
 
 
     
@@ -86,6 +76,9 @@ function play() {
         scene.showScene(scene._playScene, true);
         //charm.fadeIn(scene._playScene, 30);
     }
+    
+    player.move(); //makes the player move.
+    gravity();
 }
 
 function end() {
@@ -153,43 +146,74 @@ document.body.onkeyup = function(e){
             
                 }    
                 break;
-        case 39: /*right*/ 
-                 if(state == play) {
-                    console.log("right")
-                  }    
-                  break;
-        case 37: /*left*/  
-                if(state == play) {
-                    console.log("left")
-                }
-                break;
+        case 39: 
+        case 37: player.still();
+                 break;
     }
 }
 
-/* Given list of SubTexture node, find this specific node given the name.
-*/
-function findNode(nodeList, name) {
-//    console.log("meow")
-//    console.log(nodeList.length)
-    for(let i = 0; i < nodeList.length; i++) {
-        if(nodeList[i].getAttribute("name") == name) {
-            console.log("found!")
-            return nodeList[i];
+document.body.onkeydown = function(e) {
+     if(state == play) {
+        console.log("Working")
+        switch(e.keyCode) {
+            case 32: if(player.jumpBool == false) {
+                        player.jumpBool = true;
+                     }
+                     break;    
+            case 38: 
+                     break;    
+            case 39: 
+                     player.moveRight();
+                     break;    
+            case 37: player.moveLeft();
+                     break;    
+
         }
     }
-    
-    return null;
 }
 
-//Returns a still player
-function getStillPlayer() {
-    let xml = findNode(xmlDoc.getElementsByTagName("SubTexture"), "stand");
+
+//function for the gravity.
+function gravity() {
+    //set gravity for player
+    if(player.jumpBool == false) {
+        player.yVel = 5;
+    }
     
-    let rectangle = new PIXI.Rectangle(xml.getAttribute("x"),
-                                               xml.getAttribute("y"),
-                                               xml.getAttribute("width"),
-                                               xml.getAttribute("height"));
-    let texture = PIXI.utils.TextureCache[loader.ASSET_DASH];
-    texture.frame = rectangle;
-    return texture;
+    //check if hit on anything below it
+    onHit();
+    
 }
+
+//onHit with objects of the world
+function onHit() {
+    //Hit the container
+    bump.contain(player._playerStill, {x: 20, y: 20, width: 780, height: 780});
+    
+    
+    //hit dangerous tiles
+    
+    //Hit tiles
+    
+    
+}
+
+
+//Setup animated player
+function runningAnimation() {
+    let runTextures = [];
+    
+    for(let i = 0; i < 5; i++) {
+        let texture = PIXI.Texture.fromFrame("run" + (i+1));
+        runTextures.push(texture);
+    }
+    
+    let running = new PIXI.extras.AnimatedSprite(runTextures);
+    running.animationSpeed = 0.5;
+    running.visible = false;
+    running.play();
+    return running;
+}
+
+
+

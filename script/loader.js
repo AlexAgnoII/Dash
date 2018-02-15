@@ -7,8 +7,10 @@ This is responsible for gathering the assets needed.
 function Loader() {
     this._pixiLoader = PIXI.loader;
     this._id; //For atlas.
+    this._animId; //for animation
     //////////////////////////////////////////
     this.DASH_ATLAS = "assets/dashAtlast.json";
+    this.DASH_ANIMATION_ATLAS = "assets/animAtlas.json";
     this.ASSET_TILE = "assets/tile.png";
     this.ASSET_DASH = "assets/dash.png";
     this.ASSET_BG = "bg.png";
@@ -27,6 +29,7 @@ function Loader() {
 
 Loader.prototype.load = function(callBack) {
     this._pixiLoader.add([this.DASH_ATLAS,
+                          this.DASH_ANIMATION_ATLAS,
                           this.ASSET_TILE,
                           this.ASSET_DASH])
                     .load(callBack);
@@ -41,6 +44,15 @@ Object.defineProperty(Loader.prototype, "atlasID", {
     },
     get: function(){
         return this._id;
+    }
+})
+
+Object.defineProperty(Loader.prototype, "animID", {
+    set: function(atlas) {
+         this._animId = this._pixiLoader.resources[atlas].textures; 
+    },
+    get: function(){
+        return this._animId;
     }
 })
 
