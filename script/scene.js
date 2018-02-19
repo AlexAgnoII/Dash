@@ -105,10 +105,33 @@ function Scene() {
         
             let testSprite = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
             testSprite.anchor.set(0.5,0.5);
-            testSprite.position.set(750, 750);
+            testSprite.position.set(700, 700);
             this._playScene.addChild(testSprite);
             this._playWall.push(testSprite);
 
+            let testSprite2 = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
+            testSprite2.anchor.set(0.5,0.5);
+            testSprite2.position.set(540, 700);
+            this._playScene.addChild(testSprite2);
+            this._playWall.push(testSprite2);
+
+            let testSprite3 = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
+            testSprite3.anchor.set(0.5,0.5);
+            testSprite3.position.set(380, 700);
+            this._playScene.addChild(testSprite3);
+            this._playWall.push(testSprite3);
+    
+            let testSprite4 = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
+            testSprite4.anchor.set(0.5,0.5);
+            testSprite4.position.set(220, 700);
+            this._playScene.addChild(testSprite4);
+            this._playWall.push(testSprite4);
+        
+            let testSprite5 = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
+            testSprite5.anchor.set(0.5,0.5);
+            testSprite5.position.set(60, 700);
+            this._playScene.addChild(testSprite5);
+            this._playWall.push(testSprite5);
 
         
             this._playScene.position.set(playArea._app.renderer.width/2,

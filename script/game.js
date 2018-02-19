@@ -39,7 +39,7 @@ function setup() {
     
     //Initialize player and add to first level of play
     player = new Player(loader.animID["stand"], runningAnimation()); //need to add sprite here. 
-    player.setAnchorAnim(0.5,0.6);
+    player.setAnchorAnim(0.5,0.5);
     player.setAnchorStill(0.5,0.5);
     scene.addtoPlayScene(player._playerStill, 400,400);
     scene.addtoPlayScene(player._playerAnimated, 400,400);
@@ -191,8 +191,12 @@ function onHit() {
     //hit dangerous tiles
     
     //Hit tiles
-    bump.hit(player._playerStill, scene._playWall[0], true)
-    bump.hit(player._playerAnimated,scene._playWall[0], true)
+    
+    for(let i = 0; i < scene._playWall.length; i++) {
+        bump.hit(player._playerStill, scene._playWall[i], true)
+        bump.hit(player._playerAnimated,scene._playWall[i], true)
+    }
+
     
     
 }
