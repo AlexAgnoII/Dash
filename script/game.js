@@ -22,11 +22,14 @@ function setup() {
     console.log("Setup time!");
     loader.atlasID = loader.DASH_ATLAS;
     loader.animID = loader.DASH_ANIMATION_ATLAS;
+    loader.tileID = loader.DASH_TILE_ATLAS;
 
     
     playArea.setSize(loader._id[loader.ASSET_BG].orig.width,
                      loader._id[loader.ASSET_BG].orig.height);
     playArea.addSomething(new PIXI.Sprite(loader._id[loader.ASSET_BG]));
+    
+    //load levels and add them to play.
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
@@ -188,6 +191,8 @@ function onHit() {
     //hit dangerous tiles
     
     //Hit tiles
+    bump.hit(player._playerStill, scene._playWall[0], true)
+    bump.hit(player._playerAnimated,scene._playWall[0], true)
     
     
 }

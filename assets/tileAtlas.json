@@ -49,6 +49,6 @@
 	"image": "tile.png",
 	"format": "RGBA8888",
 	"size": {"w":320,"h":120},
-	"scale": "1",
+	"scale": "1"
 }
 }

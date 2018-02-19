@@ -103,7 +103,7 @@ function Scene() {
             }
 
         
-            let testSprite = new PIXI.Sprite(loader.animID["stand"]);
+            let testSprite = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
             testSprite.anchor.set(0.5,0.5);
             testSprite.position.set(750, 750);
             this._playScene.addChild(testSprite);
