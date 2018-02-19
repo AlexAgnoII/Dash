@@ -93,7 +93,7 @@ function Scene() {
                         rect.drawRect(xReal, yReal, size, size);
                         rect.endFill();
                         this._playScene.addChild(rect);
-                        this._playWall.push(rect);
+                        //this._playWall.push(rect);
                     }
 
                     yReal+= size;
@@ -101,11 +101,13 @@ function Scene() {
                 
                 xReal += size;
             }
+
         
-            let rectangle = new PIXI.Graphics();
-            rectangle.beginFill(0xFFFFFF);
-            rectangle.drawRect(500, 500, 100, 100);
-            this._playScene.addChild(rectangle);
+            let testSprite = new PIXI.Sprite(loader.animID["stand"]);
+            testSprite.anchor.set(0.5,0.5);
+            testSprite.position.set(750, 750);
+            this._playScene.addChild(testSprite);
+            this._playWall.push(testSprite);
 
 
         
@@ -168,6 +170,8 @@ Scene.prototype.changeEndMessage = function(win, loader) {
     }
     
 }
+
+
 
 
 

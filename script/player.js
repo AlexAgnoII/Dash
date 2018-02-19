@@ -10,8 +10,12 @@ function Player(playerStill, playerAnimated) {
     this._xVelocity = 0;
     this._yVelocity = 0;
     this._speed = 4;
-    this._apech = 150;
-    this._origJumpPoint;
+    this._interval = 35;
+    this._counter = 0;
+    this._gravity = 5;
+    this._origLocation;
+    this._left = false;
+    this._right = false;
 }
 
 
@@ -37,9 +41,8 @@ Player.prototype.moveRight = function() {
 }
 
 Player.prototype.jump = function() {
-    this._yVelocity = -5;
-    this._origJumpPoint = this._playerStill.y;
     this._jumping = true;
+    this._origLocation = this._playerStill.y;
 }
 
 Player.prototype.still = function() {
@@ -48,21 +51,43 @@ Player.prototype.still = function() {
     this._playerAnimated.visible = false;
 }
 
-Player.prototype.move = function() {
+Player.prototype.move = function(bump, tiles) {
     this._playerStill.x += this._xVelocity;
     this._playerStill.y += this._yVelocity;
     this._playerAnimated.x = this._playerStill.x;
     this._playerAnimated.y = this._playerStill.y;
     
+    console.log("counter: " + this._counter)
 
-    if(this._apech == (this._origJumpPoint - this._playerStill.y)) {
-        this._yVelocity = 5;
+    if(this._jumping) {
+        console.log("JUMP")
+        if(this._counter == this._interval) {
+            this._yVelocity = this._gravity;
+            
+            if(bump.hit(this._playerStill, tiles[0], true) == "bottom") {
+                this._jumping = false;
+                this._counter = 0;
+            }
+    
+            bump.hit(this._playerAnimated, tiles[0], true, false, false)
+        }
+        
+        else {
+            this._yVelocity = -5;
+            this._counter++;
+        }
     }
-    if(this._jumping == true && this._origJumpPoint == this._playerStill.y) {
-        this._jumping = false;
+    
+    else {
+        this._yVelocity = this._gravity;
+        bump.hit(this._playerStill, tiles[0], true)
+        bump.hit(this._playerAnimated, tiles[0], true)
     }
+    
+    
 
     
+
 }
 
 Player.prototype.setAnchorStill = function(x,y) {
@@ -99,3 +124,23 @@ Object.defineProperty(Player.prototype, "jumpBool", {
         return this._jumping;
     }
 })
+
+Object.defineProperty(Player.prototype, "left", {
+    set: function(goingLeft) {
+        this._left = goingLeft;
+    },
+    get: function(){
+        return this._left;
+    }
+})
+
+Object.defineProperty(Player.prototype, "right", {
+    set: function(goingRight) {
+        this._right = goingRight;
+    },
+    get: function(){
+        return this._right;
+    }
+})
+
+

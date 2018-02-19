@@ -49,6 +49,7 @@ function setup() {
     playArea._app.ticker.add(delta => gameLoop(delta));
 }
 
+
 function gameLoop() {
     state();
     charm.update();
@@ -77,7 +78,7 @@ function play() {
         //charm.fadeIn(scene._playScene, 30);
     }
     
-    player.move(); //makes the player move.
+    player.move(bump, scene._playWall); //makes the player move.
     gravity();
 }
 
@@ -122,32 +123,24 @@ document.body.onkeyup = function(e){
                      }
 
                  }
-        
-                 else if(state == play){ //Jump
-                     console.log("STATE IS PLAY")
-                     
-                     //TEMPORARY
-                     //charm.fadeOut(scene._playScene, 30).onComplete = () => {
-//                         scene.showScene(scene._playScene, false);
-//                         state = end;
-                     //};
-                 }
                 
-                 //end        
-                 else {
-                    charm.fadeOut(scene._endScene, 30).onComplete = () => {
-                        scene.showScene(scene._endScene, false);
-                        state = title;
-                    }
-                   
-                 }
+//                 //end        
+//                 else {
+//                    charm.fadeOut(scene._endScene, 30).onComplete = () => {
+//                        scene.showScene(scene._endScene, false);
+//                        state = title;
+//                    }
+//                   
+//                 }
                 break;
         case 38:if(state == play) {
             
                 }    
                 break;
         case 39: 
-        case 37: player.still();
+        case 37:  player.still();
+
+
                  break;
     }
 }
@@ -155,17 +148,20 @@ document.body.onkeyup = function(e){
 document.body.onkeydown = function(e) {
      if(state == play) {
         switch(e.keyCode) {
-            case 32: console.log(player.jumpBool); 
+            case 32:  
                     if(player.jumpBool == false) {
+                        console.log(player.jumpBool);
                         player.jump();
                      }
                      break;    
-            case 38: 
+            case 38: //go to next floor
                      break;    
-            case 39: 
-                     player.moveRight();
+            case 39:player.moveRight();
+ 
+
                      break;    
-            case 37: player.moveLeft();
+            case 37:player.moveLeft();
+
                      break;    
 
         }
@@ -176,9 +172,6 @@ document.body.onkeydown = function(e) {
 //function for the gravity.
 function gravity() {
     //set gravity for player
-    if(player.jumpBool == false) {
-        player.yVel = 5;
-    }
     
     //check if hit on anything below it
     onHit();
@@ -189,6 +182,7 @@ function gravity() {
 function onHit() {
     //Hit the container
     bump.contain(player._playerStill, {x: 20, y: 20, width: 780, height: 780});
+    bump.contain(player._playerAnimated, {x: 20, y: 20, width: 780, height: 780});
     
     
     //hit dangerous tiles
