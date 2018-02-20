@@ -163,8 +163,12 @@ document.body.onkeydown = function(e) {
 
                         let currentLevel = level.currentLevel;
                         console.log("Current level: " + currentLevel);
-                        scalePlayer(currentLevel+1); //proceed to next level
-
+                        
+                        if(player._playerStill.scale.x > 0)
+                            scalePlayer(currentLevel+1,1); //proceed to next level
+                        else {
+                            scalePlayer(currentLevel+1,-1); 
+                        }
                      }
                      break;    
             case 39: if(level._complete == false)
@@ -199,20 +203,13 @@ function onHit() {
     
 }
 
-function scalePlayer(next) {
+function scalePlayer(next, charge) {
     
-    if(player._playerStill.scale.x < 0) {
-       charm.scale(player._playerStill, -1.5, 1.5, 10).onComplete = () =>
+       charm.scale(player._playerStill, (1.5*charge), 1.5, 10).onComplete = () =>
        charm.scale(player._playerStill, 0, 0, 5).onComplete = () => {
            changeLevel(next);
        }
-    }
-    else {
-       charm.scale(player._playerStill, 1.5,1.5, 10).onComplete = () => 
-       charm.scale(player._playerStill, 0,0, 5).onComplete = () => {
-           changeLevel(next);
-       }
-    }
+
 }
 
 function changeLevel(next) {
