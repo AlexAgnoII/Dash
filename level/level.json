@@ -252,18 +252,61 @@
         },
         "20":
         {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":535, 
+            "y":400
+        },
+        "21":
+        {
+            "name": "big_vertical_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":760, 
+            "y":555
+        },
+
+        "22":
+        {
+            "name": "small_rectangle_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":285, 
+            "y":435
+        },
+        
+        "23":
+        {
+            "name": "big_vertical_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":100, 
+            "y":300
+        },
+        "24":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":280, 
+            "y":187
+        },
+        
+        "25":
+        {
             "name": "player",
             "id":"none",
             "type": "none",
             "x":65, 
             "y":642
         },
-        "21":
+        "26":
         {
             "name": "door0001.png",
             "id":"dashId",
             "type": "door",
-            "x":150, 
+            "x":280, 
             "y":150
         }
     },
