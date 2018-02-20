@@ -207,7 +207,12 @@ function scalePlayer(next, charge) {
     
        charm.scale(player._playerStill, (1.5*charge), 1.5, 10).onComplete = () =>
        charm.scale(player._playerStill, 0, 0, 5).onComplete = () => {
-           changeLevel(next);
+           
+           //fade out current level
+           charm.fadeOut(level.currentLevelContainer, 15).onComplete = () => {
+               changeLevel(next);
+           }
+
        }
 
 }
