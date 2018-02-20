@@ -10,6 +10,7 @@ let loader;
 let scene;
 let state;
 let win = false;
+let complete = false;
 let level;
 let player;
 

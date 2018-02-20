@@ -14,6 +14,7 @@ function Player(playerStill, playerAnimated) {
     this._counter = 0;
     this._gravity = 0.5;
     this._hitTop = false;
+    this._dead = false;
 }
 
 
