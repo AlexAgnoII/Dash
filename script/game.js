@@ -10,7 +10,6 @@ let loader;
 let scene;
 let state;
 let win = false;
-let complete = false;
 let level;
 let player;
 
@@ -33,7 +32,7 @@ function setup() {
     
     //load levels and add them to play.
     getLevels();
-    console.log(level._levelList);
+    level.generateLevels(loader);
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);

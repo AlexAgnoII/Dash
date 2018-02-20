@@ -122,8 +122,8 @@ Player.prototype.move = function(bump, tiles) {
 //        this._playerAnimated.rotation += 2.5;
 //    }
     
-//    console.log(player._playerStill.y)
-//    console.log(player._playerStill.x)
+    console.log(player._playerStill.y)
+    console.log(player._playerStill.x)
     
 }
 
