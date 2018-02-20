@@ -7,7 +7,13 @@ Responsible for the tiles generated in the world.
 */
 
 
-function Level(levelList) {
-    this._levelList = levelList;
+function Level() {
+    this._levelList;
     this._currentLevel;
+}
+
+
+Level.prototype.load = function(){
+    this._levelList = "lmao";
+    console.log(this._levelList);
 }

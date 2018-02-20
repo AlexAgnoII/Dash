@@ -10,6 +10,7 @@ let loader;
 let scene;
 let state;
 let win = false;
+let level;
 let player;
 
 
@@ -30,6 +31,7 @@ function setup() {
     playArea.addSomething(new PIXI.Sprite(loader._id[loader.ASSET_BG]));
     
     //load levels and add them to play.
+    level.load();
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
@@ -102,6 +104,7 @@ function end() {
 function main() {
     playArea = new PlayArea();
     loader = new Loader();
+    level = new Level();
 
     playArea.placePlayArea(gameDiv);
     loader.load(setup);
@@ -137,10 +140,7 @@ document.body.onkeyup = function(e){
 //                 }
                 break;
         case 39: 
-        case 37:  player.still();
-
-
-                 break;
+        case 37:  player.still(); break;
     }
 }
 
@@ -151,24 +151,15 @@ document.body.onkeydown = function(e) {
                     if(player.jumpBool == false) {
                         console.log(player.jumpBool);
                         player.jump();
-                     }
-                     break;    
+                     } break;    
             case 38: //go to next floor
                     if(bump.hit(player._playerStill, scene._currentDoor)) {
                          scene._currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
                          scalePlayer(); //proceed to next level
 
-                     }
-
-                     break;    
-            case 39:player.moveRight();
- 
-
-                     break;    
-            case 37:player.moveLeft();
-
-                     break;    
-
+                     } break;    
+            case 39:player.moveRight();break;    
+            case 37:player.moveLeft();break;    
         }
     }
 }
