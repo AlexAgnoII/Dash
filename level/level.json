@@ -4,61 +4,61 @@
         {
             "name": "big_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "1":
         {
             "name": "big_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "2":
         {
             "name": "big_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "3":
         {
             "name": "big_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "4":
         {
             "name": "big_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "5":
         {
             "name": "big_square_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "6":
         {
             "name": "big_square_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "7":
         {
             "name": "small_square_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "8":
         {
             "name": "small_rectangle_tile",
             "x":100, 
-            "y":100,
+            "y":100
         },
         "9":
         {
             "name": "door0001.png",
             "x":100, 
-            "y":100,
+            "y":100
         }
     }
 

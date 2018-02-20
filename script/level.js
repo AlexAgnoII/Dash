@@ -14,6 +14,14 @@ function Level() {
 
 
 Level.prototype.load = function(){
-    this._levelList = "lmao";
-    console.log(this._levelList);
+    $.ajax({
+        url: "level/level.json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function() {
+            console.log("fail")
+        }
+    });
 }
