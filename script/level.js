@@ -138,7 +138,7 @@ Object.defineProperty(Level.prototype, "currentLevelContainer", {
         console.log("Current Level: " + test);
     },
     get: function(){
-        return this._levelContainer[this._currentLevel];
+        return this._levelContainers[this._currentLevel];
     }
 })
 

@@ -165,14 +165,18 @@ function Scene() {
 //            this._playScene.addChild(testSprite10);
 //            this._currentDoor = testSprite10
         
-            this._playScene.addChild(level[0]);
-
-
+            for (let i  = 0 ; i < level.length; i++) {
+                this._playScene.addChild(level[i]);
+            }
+            
             this._playScene.position.set(playArea._app.renderer.width/2,
                                              playArea._app.renderer.height/2);
             this._playScene.pivot.x = this._playScene.width/2;
             this._playScene.pivot.y = this._playScene.height/2;
             
+            for (let i  = 0 ; i < level.length; i++) {
+                level[i].visible = false;
+            }
             this._playScene.visible = false;
         }
     

@@ -47,7 +47,8 @@ function setup() {
     scene.addtoPlayScene(player._playerStill, 400,400);
     scene.addtoPlayScene(player._playerAnimated, 400,400);
 
-
+    //set level 1 to visible
+    level.currentLevelContainer.visible =true;
     
     state = title;
     
@@ -159,7 +160,6 @@ document.body.onkeydown = function(e) {
                          
                          let currentLevel = level.currentLevel;
                          console.log("Current level: " + currentLevel);
-
                          scalePlayer(currentLevel+1); //proceed to next level
 
                      } break;    
@@ -209,13 +209,21 @@ function scalePlayer(next) {
 function changeLevel(next) {
     console.log("Next level: " + next);
     
+
     //Hide current level
     
     //reset current level
     
-    //change current level to next level
+    //if max level
+    if(next == level._maxLevel) {
+        state = end;
+    }
+    else {
+        
+    //if not yet, change current level to next level
     
     //show next level
+    }
 }
 
 
