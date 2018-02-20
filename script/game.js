@@ -78,15 +78,15 @@ function tutorial() {
 function play() {
     if(scene._playScene.visible == false) {
         scene.showScene(scene._playScene, true);
-        initialPlayer();
+        startLevel();
         
-        level.currentLevelContainer.visible = true;
-        charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
-            charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
-            charm.scale(player._playerStill, 1, 1,  5).onComplete = () => {
-                level._complete = false;
-            }
-        }
+//        level.currentLevelContainer.visible = true;
+//        charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
+//            charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
+//            charm.scale(player._playerStill, 1, 1,  5).onComplete = () => {
+//                level._complete = false;
+//            }
+//        }
     }
     
     player.move(bump, level.currentThingsList); //makes the player move.
@@ -104,10 +104,19 @@ function end() {
     }
 }
 
-function initialPlayer() {
+function startLevel() {
+    console.log("Real current level: " + level.currentLevel);
     scene.addtoPlayScene(player._playerStill, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
     scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
     player._playerStill.scale.set(0,0);
+    
+    level.currentLevelContainer.visible = true;
+    charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
+        charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
+        charm.scale(player._playerStill, 1, 1,  5).onComplete = () => {
+            level._complete = false;
+        }
+    }
 }
 
 
@@ -161,7 +170,7 @@ document.body.onkeydown = function(e) {
         switch(e.keyCode) {
             case 32:  
                     if(player.jumpBool == false && level._complete == false) {
-                        console.log(player.jumpBool);
+                        //console.log(player.jumpBool);
                         player.jump();
                      } break;    
             case 38: //go to next floor
@@ -242,9 +251,11 @@ function changeLevel(next) {
     }
     else {
         
-    //if not yet, change current level to next level
-    
-    //show next level
+        //if not yet, change current level to next level
+        level.currentLevel = next;
+
+        //show next level
+        startLevel();
     }
 }
 

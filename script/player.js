@@ -90,7 +90,7 @@ Player.prototype.move = function(bump, tiles) {
                 if(bump.hit(this._playerStill, tiles[i], true) == "top") {
                     this._counter = this._interval;
                     this._hitTop = true;
-                    console.log("top")
+                    //console.log("top")
                     
                 }
                 bump.hit(this._playerAnimated, tiles[i], true)
@@ -102,7 +102,7 @@ Player.prototype.move = function(bump, tiles) {
         
             for(let  i = 0; i < tiles.length; i++) {
                 if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
-                    console.log("constant")
+                    //console.log("constant")
                     this._yVelocity = 1;
                 }
                 else {
