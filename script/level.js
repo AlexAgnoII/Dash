@@ -9,7 +9,7 @@ Responsible for the tiles generated in the world.
 
 function Level(data) {
     this._levelList = data;
-    this._currentLevel = 1;
+    this._currentLevel = 0;
     this._currentDoor;
     this._complete = false;
     this._playerLocations = [];
@@ -94,3 +94,21 @@ Level.prototype.generateLevels = function(loader) {
     console.log(this._levelThingList);
     console.log(this._playerLocations);
 }
+
+Object.defineProperty(Level.prototype, "currentDoor", {
+    set: function(door) {
+        this._currentDoor = door;
+    },
+    get: function(){
+        return this._currentDoor;
+    }
+})
+
+Object.defineProperty(Level.prototype, "currentLevel", {
+    set: function(level) {
+        this._currentLevel = level;
+    },
+    get: function(){
+        return this._currentLevel;
+    }
+})

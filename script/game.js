@@ -84,7 +84,7 @@ function play() {
         //charm.fadeIn(scene._playScene, 30);
     }
     
-    player.move(bump, scene._playWall); //makes the player move.
+    player.move(bump, level._levelThingList[level.currentLevel]); //makes the player move.
     onHit();
 }
 
@@ -178,8 +178,9 @@ function onHit() {
     //hit dangerous tiles (once hit game over!)
     
     //Hit tiles
-    bump.hit(player._playerStill, scene._playWall, true);
-    bump.hit(player._playerAnimated, scene._playWall, true);
+    console.log(level.currentLevel)
+    bump.hit(player._playerStill, level._levelThingList[level.currentLevel], true);
+    bump.hit(player._playerAnimated, level._levelThingList[level.currentLevel], true);
 
     
     
