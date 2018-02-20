@@ -31,7 +31,8 @@ function setup() {
     playArea.addSomething(new PIXI.Sprite(loader._id[loader.ASSET_BG]));
     
     //load levels and add them to play.
-    level.load();
+    getLevels();
+    console.log(level._levelList);
     
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
@@ -218,5 +219,14 @@ function runningAnimation() {
     return running;
 }
 
+function getLevels() {
+    $.ajax({
+        url: "level/level.json",
+        async: false
+    })
+    .done(function(data) {
+        level = new Level(data);
+    })
+}
 
 

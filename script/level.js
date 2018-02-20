@@ -7,21 +7,9 @@ Responsible for the tiles generated in the world.
 */
 
 
-function Level() {
-    this._levelList;
+function Level(data) {
+    this._levelList = data;
     this._currentLevel;
-}
+    
 
-
-Level.prototype.load = function(){
-    $.ajax({
-        url: "level/level.json",
-        async: false,
-        success: function (data) {
-            console.log(data);
-        },
-        error: function() {
-            console.log("fail")
-        }
-    });
 }
