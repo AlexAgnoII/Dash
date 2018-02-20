@@ -79,7 +79,7 @@ Level.prototype.generateLevels = function(loader) {
                   
                 let sprite = new PIXI.Sprite(id[lvl[y].name]);
                 sprite.position.set(lvl[y].x, lvl[y].y);
-
+                sprite.anchor.set(0.5,0.5);
                 things.push(sprite);
                 container.addChild(sprite);
             }

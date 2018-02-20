@@ -37,7 +37,7 @@ function setup() {
     scene = new Scene();
     scene.initializeTitle(playArea, loader);
     scene.initializeTutorial(playArea, loader);
-    scene.initializePlay(playArea, loader);
+    scene.initializePlay(playArea, loader, level._levelContainers);
     scene.initializeEnd(playArea, loader);
     
     //Initialize player and add to first level of play
