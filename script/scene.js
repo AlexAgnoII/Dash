@@ -176,6 +176,7 @@ function Scene() {
             
             for (let i  = 0 ; i < level.length; i++) {
                 level[i].visible = false;
+                level[i].alpha = 0;
             }
             this._playScene.visible = false;
         }

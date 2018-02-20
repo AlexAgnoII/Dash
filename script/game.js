@@ -9,7 +9,6 @@ let playArea;
 let loader;
 let scene;
 let state;
-let win = false;
 let level;
 let player;
 
@@ -44,11 +43,9 @@ function setup() {
     player = new Player(loader.animID["stand"], runningAnimation()); //need to add sprite here. 
     player.setAnchorAnim(0.5,0.5);
     player.setAnchorStill(0.5,0.5);
-    scene.addtoPlayScene(player._playerStill, 400,400);
-    scene.addtoPlayScene(player._playerAnimated, 400,400);
-
-    //set level 1 to visible
-    level.currentLevelContainer.visible =true;
+    scene.addtoPlayScene(player._playerStill, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
+    scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
+    
     
     state = title;
     
@@ -82,7 +79,11 @@ function tutorial() {
 function play() {
     if(scene._playScene.visible == false) {
         scene.showScene(scene._playScene, true);
-        //charm.fadeIn(scene._playScene, 30);
+        
+        level.currentLevelContainer.visible = true;
+        charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
+            
+        }
     }
     
     player.move(bump, level.currentThingsList); //makes the player move.
@@ -142,7 +143,7 @@ document.body.onkeyup = function(e){
 //                 }
                 break;
         case 39: 
-        case 37:  player.still(); break;
+        case 37:player.still(); break;
     }
 }
 
@@ -150,21 +151,29 @@ document.body.onkeydown = function(e) {
      if(state == play) {
         switch(e.keyCode) {
             case 32:  
-                    if(player.jumpBool == false) {
+                    if(player.jumpBool == false && level._complete == false) {
                         console.log(player.jumpBool);
                         player.jump();
                      } break;    
             case 38: //go to next floor
                     if(bump.hit(player._playerStill, level.currentDoor)) {
-                         level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
-                         
-                         let currentLevel = level.currentLevel;
-                         console.log("Current level: " + currentLevel);
-                         scalePlayer(currentLevel+1); //proceed to next level
+                        player.still();
+                        level._complete = true;
+                        level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
 
-                     } break;    
-            case 39:player.moveRight();break;    
-            case 37:player.moveLeft();break;    
+                        let currentLevel = level.currentLevel;
+                        console.log("Current level: " + currentLevel);
+                        scalePlayer(currentLevel+1); //proceed to next level
+
+                     }
+                     break;    
+            case 39: if(level._complete == false)
+                        player.moveRight();
+
+                     break;    
+            case 37:if(level._complete == false)
+                        player.moveLeft();
+                    break;    
         }
     }
 }

@@ -150,3 +150,12 @@ Object.defineProperty(Level.prototype, "currentThingsList", {
         return this._levelThingList[this._currentLevel];
     }
 })
+
+Object.defineProperty(Level.prototype, "currentLevelPlayerLoc", {
+    set: function(test) {
+        console.log("Current loc: " + test);
+    },
+    get: function(){
+        return this._playerLocations[this._currentLevel];
+    }
+})
