@@ -84,7 +84,7 @@ function play() {
         //charm.fadeIn(scene._playScene, 30);
     }
     
-    player.move(bump, level._levelThingList[level.currentLevel]); //makes the player move.
+    player.move(bump, level.currentThingsList); //makes the player move.
     onHit();
 }
 
@@ -179,8 +179,8 @@ function onHit() {
     
     //Hit tiles
     console.log(level.currentLevel)
-    bump.hit(player._playerStill, level._levelThingList[level.currentLevel], true);
-    bump.hit(player._playerAnimated, level._levelThingList[level.currentLevel], true);
+    bump.hit(player._playerStill, level.currentThingsList, true);
+    bump.hit(player._playerAnimated, level.currentThingsList, true);
 
     
     

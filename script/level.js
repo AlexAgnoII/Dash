@@ -140,3 +140,12 @@ Object.defineProperty(Level.prototype, "currentLevelContainer", {
         return this._levelContainer[this._currentLevel];
     }
 })
+
+Object.defineProperty(Level.prototype, "currentThingsList", {
+    set: function(test) {
+        console.log("Current things: " + test);
+    },
+    get: function(){
+        return this._levelThingList[this._currentLevel];
+    }
+})
