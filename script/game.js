@@ -136,10 +136,6 @@ document.body.onkeyup = function(e){
 //                   
 //                 }
                 break;
-        case 38:if(state == play) {
-            
-                }    
-                break;
         case 39: 
         case 37:  player.still();
 
@@ -158,6 +154,10 @@ document.body.onkeydown = function(e) {
                      }
                      break;    
             case 38: //go to next floor
+                    if(bump.hit(player._playerStill, scene._currentDoor)) {
+                         scene._currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
+                     }
+
                      break;    
             case 39:player.moveRight();
  
@@ -184,10 +184,8 @@ function onHit() {
     //hit dangerous tiles (once hit game over!)
     
     //Hit tiles
-    for(let i = 0; i < scene._playWall.length-1; i++) {
-        bump.hit(player._playerStill, scene._playWall[i], true)
-        bump.hit(player._playerAnimated,scene._playWall[i], true)
-    }
+    bump.hit(player._playerStill, scene._playWall, true);
+    bump.hit(player._playerAnimated, scene._playWall, true);
 
     
     

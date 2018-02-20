@@ -10,7 +10,7 @@ function Player(playerStill, playerAnimated) {
     this._xVelocity = 0;
     this._yVelocity = 0;
     this._speed = 5;
-    this._interval = 20;
+    this._interval = 16;
     this._counter = 0;
     this._gravity = 0.5;
     this._left = false;
@@ -67,7 +67,7 @@ Player.prototype.move = function(bump, tiles) {
             this._yVelocity += this._gravity;
             
             
-            for(let  i = 0; i < tiles.length-1; i++) {
+            for(let  i = 0; i < tiles.length; i++) {
                 if(bump.hit(this._playerStill, tiles[i], true) == "bottom") {
                     this._jumping = false;
                     this._counter = 0;
@@ -82,10 +82,11 @@ Player.prototype.move = function(bump, tiles) {
             this._yVelocity = -7.5;
             this._counter++;
             
-            for(let  i = 0; i < tiles.length-1; i++) {
+            for(let  i = 0; i < tiles.length; i++) {
                 if(bump.hit(this._playerStill, tiles[i], true) == "top") {
                     this._counter = 0;
                     this._jumping = false;
+                    console.log("top")
                 }
                 bump.hit(this._playerAnimated, tiles[i], true)
             }
@@ -94,9 +95,10 @@ Player.prototype.move = function(bump, tiles) {
     
     else {
         
-            for(let  i = 0; i < tiles.length-1; i++) {
+            for(let  i = 0; i < tiles.length; i++) {
 
-                if(bump.hit(this._playerStill, tiles[i])) {
+                if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
+                    console.log("constant")
                     this._yVelocity = 1;
                 }
                 else {

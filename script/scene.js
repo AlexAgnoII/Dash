@@ -10,6 +10,7 @@ function Scene() {
     this._endScene = new PIXI.Container();
     this._endMessage;
     this._playWall = []; //Walls that holds the room.
+    this._currentDoor;
     
     this.initializeTitle = 
         function(playArea, loader) {
@@ -162,7 +163,7 @@ function Scene() {
             testSprite10.anchor.set(0.5,0.5);
             testSprite10.position.set(300, 160);
             this._playScene.addChild(testSprite10);
-            this._playWall.push(testSprite10);
+            this._currentDoor = testSprite10
 
 
             this._playScene.position.set(playArea._app.renderer.width/2,

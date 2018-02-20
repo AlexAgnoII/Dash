@@ -9,4 +9,5 @@ Responsible for the tiles generated in the world.
 
 function Level(levelList) {
     this._levelList = levelList;
+    this._currentLevel;
 }
