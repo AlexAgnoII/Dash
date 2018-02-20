@@ -13,8 +13,6 @@ function Player(playerStill, playerAnimated) {
     this._interval = 16;
     this._counter = 0;
     this._gravity = 0.5;
-    this._left = false;
-    this._right = false;
     this._hitTop = false;
 }
 
@@ -112,6 +110,16 @@ Player.prototype.move = function(bump, tiles) {
             }
 
     }
+
+    //Death roll here
+//    if(this._playerStill.scale.x < 0) {
+//        //this._playerStill.rotation -= 0.5;
+//        this._playerAnimated.rotation -= 2.5;
+//    }
+//    else {
+//        //this._playerStill.rotation += 0.5;
+//        this._playerAnimated.rotation += 2.5;
+//    }
     
 //    console.log(player._playerStill.y)
 //    console.log(player._playerStill.x)
@@ -153,22 +161,5 @@ Object.defineProperty(Player.prototype, "jumpBool", {
     }
 })
 
-Object.defineProperty(Player.prototype, "left", {
-    set: function(goingLeft) {
-        this._left = goingLeft;
-    },
-    get: function(){
-        return this._left;
-    }
-})
-
-Object.defineProperty(Player.prototype, "right", {
-    set: function(goingRight) {
-        this._right = goingRight;
-    },
-    get: function(){
-        return this._right;
-    }
-})
 
 

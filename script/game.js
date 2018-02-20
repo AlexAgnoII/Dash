@@ -156,6 +156,8 @@ document.body.onkeydown = function(e) {
             case 38: //go to next floor
                     if(bump.hit(player._playerStill, scene._currentDoor)) {
                          scene._currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
+                         scalePlayer(); //proceed to next level
+
                      }
 
                      break;    
@@ -190,6 +192,23 @@ function onHit() {
     
     
 }
+
+function scalePlayer(next) {
+    if(player._playerStill.scale.x < 0) {
+       charm.scale(player._playerStill, -1.5, 1.5, 10).onComplete = () =>
+       charm.scale(player._playerStill, 0, 0, 5).onComplete = () => {
+           
+       }
+    }
+    else {
+       charm.scale(player._playerStill, 1.5,1.5, 10).onComplete = () => 
+       charm.scale(player._playerStill, 0,0, 5).onComplete = () => {
+           
+       }
+    }
+}
+
+
 
 
 //Setup animated player
