@@ -57,7 +57,7 @@ Player.prototype.move = function(bump, tiles) {
     this._playerAnimated.x = this._playerStill.x;
     this._playerAnimated.y = this._playerStill.y;
     
-    
+    //console.log(tiles.length);
 
     if(this._jumping) {
         
@@ -102,8 +102,8 @@ Player.prototype.move = function(bump, tiles) {
         
             for(let  i = 0; i < tiles.length; i++) {
                 if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
-                    //console.log("constant")
-                    this._yVelocity = 1;
+                    console.log("constant")
+                    this._yVelocity = 3; //originally 1
                 }
                 else {
                     this._yVelocity += this._gravity*0.1;
@@ -111,6 +111,8 @@ Player.prototype.move = function(bump, tiles) {
             }
 
     }
+//    console.log("yVel: " + this._yVelocity);
+//    console.log("xVel: " + this._xVelocity);
 
     //Death roll here
 //    if(this._playerStill.scale.x < 0) {

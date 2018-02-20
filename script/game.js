@@ -110,6 +110,9 @@ function startLevel() {
     scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
     player._playerStill.scale.set(0,0);
     
+    player.yVel = 0;
+    player.xVel = 0;
+    
     level.currentLevelContainer.visible = true;
     charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
         charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
