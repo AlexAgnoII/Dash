@@ -156,7 +156,11 @@ document.body.onkeydown = function(e) {
             case 38: //go to next floor
                     if(bump.hit(player._playerStill, level.currentDoor)) {
                          level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
-                         scalePlayer(); //proceed to next level
+                         
+                         let currentLevel = level.currentLevel;
+                         console.log("Current level: " + currentLevel);
+
+                         scalePlayer(currentLevel+1); //proceed to next level
 
                      } break;    
             case 39:player.moveRight();break;    
@@ -178,7 +182,7 @@ function onHit() {
     //hit dangerous tiles (once hit game over!)
     
     //Hit tiles
-    console.log(level.currentLevel)
+    //console.log(level.currentLevel)
     bump.hit(player._playerStill, level.currentThingsList, true);
     bump.hit(player._playerAnimated, level.currentThingsList, true);
 
@@ -187,21 +191,32 @@ function onHit() {
 }
 
 function scalePlayer(next) {
+    
     if(player._playerStill.scale.x < 0) {
        charm.scale(player._playerStill, -1.5, 1.5, 10).onComplete = () =>
        charm.scale(player._playerStill, 0, 0, 5).onComplete = () => {
-           
+           changeLevel(next);
        }
     }
     else {
        charm.scale(player._playerStill, 1.5,1.5, 10).onComplete = () => 
        charm.scale(player._playerStill, 0,0, 5).onComplete = () => {
-           
+           changeLevel(next);
        }
     }
 }
 
-
+function changeLevel(next) {
+    console.log("Next level: " + next);
+    
+    //Hide current level
+    
+    //reset current level
+    
+    //change current level to next level
+    
+    //show next level
+}
 
 
 //Setup animated player

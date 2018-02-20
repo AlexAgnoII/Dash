@@ -8,6 +8,7 @@ Responsible for the tiles generated in the world.
 
 
 function Level(data) {
+    this._maxLevel = 5;
     this._levelList = data;
     this._currentLevel = 0;
     this._doorList = [];
