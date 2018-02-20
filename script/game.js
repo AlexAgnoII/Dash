@@ -154,8 +154,8 @@ document.body.onkeydown = function(e) {
                         player.jump();
                      } break;    
             case 38: //go to next floor
-                    if(bump.hit(player._playerStill, scene._currentDoor)) {
-                         scene._currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
+                    if(bump.hit(player._playerStill, level.currentDoor)) {
+                         level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
                          scalePlayer(); //proceed to next level
 
                      } break;    

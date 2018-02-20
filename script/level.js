@@ -10,7 +10,7 @@ Responsible for the tiles generated in the world.
 function Level(data) {
     this._levelList = data;
     this._currentLevel = 0;
-    this._currentDoor;
+    this._doorList = [];
     this._complete = false;
     this._playerLocations = [];
     this._levelContainers = [];
@@ -56,6 +56,7 @@ Level.prototype.generateLevels = function(loader) {
         //World object.
         let lvl = this._levelList[x];
         let things = [];
+        let danger = [];
         for(let y in lvl) {
             console.log(lvl[y])
             
@@ -80,27 +81,45 @@ Level.prototype.generateLevels = function(loader) {
                 let sprite = new PIXI.Sprite(id[lvl[y].name]);
                 sprite.position.set(lvl[y].x, lvl[y].y);
                 sprite.anchor.set(0.5,0.5);
-                things.push(sprite);
                 container.addChild(sprite);
+                
+                //For tiles:
+                if(lvl[y].type == "tile")
+                    things.push(sprite);
+                
+                //For dangerous tiles:
+                else if(lvl[y].type == "danger")
+                    console.log("danger!")
+                //For doors:
+                else {
+                    this._doorList.push(sprite);
+                }
+                
             }
 
         }
         
         this._levelContainers.push(container);
+        
         this._levelThingList.push(things);
         
+        //If the danger tiles is not empty, do this
+        //
+        //
+        //
     }
     console.log(this._levelContainers);
     console.log(this._levelThingList);
     console.log(this._playerLocations);
+    console.log(this._doorList);
 }
 
 Object.defineProperty(Level.prototype, "currentDoor", {
-    set: function(door) {
-        this._currentDoor = door;
+    set: function(doors) {
+         this._doorList = doors;
     },
     get: function(){
-        return this._currentDoor;
+        return this._doorList[this._currentLevel];
     }
 })
 
@@ -110,5 +129,14 @@ Object.defineProperty(Level.prototype, "currentLevel", {
     },
     get: function(){
         return this._currentLevel;
+    }
+})
+
+Object.defineProperty(Level.prototype, "currentLevelContainer", {
+    set: function(test) {
+        console.log("Current Level: " + test);
+    },
+    get: function(){
+        return this._levelContainer[this._currentLevel];
     }
 })

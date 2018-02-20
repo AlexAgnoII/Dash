@@ -4,6 +4,7 @@
         {
             "name": "big_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":700, 
             "y":700
         },
@@ -11,6 +12,7 @@
         {
             "name": "big_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":540, 
             "y":700
         },
@@ -18,6 +20,7 @@
         {
             "name": "big_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":380, 
             "y":700
         },
@@ -25,6 +28,7 @@
         {
             "name": "big_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":220, 
             "y":700
         },
@@ -32,6 +36,7 @@
         {
             "name": "big_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":100, 
             "y":700
         },
@@ -39,6 +44,7 @@
         {
             "name": "big_square_tile",
             "id":"tileId",
+            "type": "tile",
             "x":450, 
             "y":550
         },
@@ -46,6 +52,7 @@
         {
             "name": "big_square_tile",
             "id":"tileId",
+            "type": "tile",
             "x":700, 
             "y":300
         },
@@ -53,6 +60,7 @@
         {
             "name": "small_square_tile",
             "id":"tileId",
+            "type": "tile",
             "x":580, 
             "y":430
         },
@@ -60,6 +68,7 @@
         {
             "name": "small_rectangle_tile",
             "id":"tileId",
+            "type": "tile",
             "x":300, 
             "y":200
         },
@@ -67,6 +76,7 @@
         {
             "name": "player",
             "id":"none",
+            "type": "none",
             "x":65, 
             "y":642
         },
@@ -74,6 +84,7 @@
         {
             "name": "door0001.png",
             "id":"dashId",
+            "type": "door",
             "x":300, 
             "y":160
         }
