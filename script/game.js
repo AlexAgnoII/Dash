@@ -82,7 +82,7 @@ function play() {
     }
     
     player.move(bump, scene._playWall); //makes the player move.
-    gravity();
+    onHit();
 }
 
 function end() {
@@ -172,14 +172,7 @@ document.body.onkeydown = function(e) {
 }
 
 
-//function for the gravity.
-function gravity() {
-    //set gravity for player
-    
-    //check if hit on anything below it
-    onHit();
-    
-}
+
 
 //onHit with objects of the world
 function onHit() {
@@ -188,11 +181,10 @@ function onHit() {
     bump.contain(player._playerAnimated, {x: 20, y: 20, width: 780, height: 780});
     
     
-    //hit dangerous tiles
+    //hit dangerous tiles (once hit game over!)
     
     //Hit tiles
-    
-    for(let i = 0; i < scene._playWall.length; i++) {
+    for(let i = 0; i < scene._playWall.length-1; i++) {
         bump.hit(player._playerStill, scene._playWall[i], true)
         bump.hit(player._playerAnimated,scene._playWall[i], true)
     }

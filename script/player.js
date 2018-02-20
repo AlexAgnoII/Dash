@@ -13,7 +13,6 @@ function Player(playerStill, playerAnimated) {
     this._interval = 20;
     this._counter = 0;
     this._gravity = 0.5;
-    this._origLocation;
     this._left = false;
     this._right = false;
 }
@@ -46,7 +45,6 @@ Player.prototype.moveRight = function() {
 
 Player.prototype.jump = function() {
     this._jumping = true;
-    this._origLocation = this._playerStill.y;
 }
 
 Player.prototype.still = function() {
@@ -64,17 +62,17 @@ Player.prototype.move = function(bump, tiles) {
     
 
     if(this._jumping) {
-        console.log("JUMP")
+        
         if(this._counter == this._interval) {
             this._yVelocity += this._gravity;
             
             
-            for(let  i = 0; i < tiles.length; i++) {
+            for(let  i = 0; i < tiles.length-1; i++) {
                 if(bump.hit(this._playerStill, tiles[i], true) == "bottom") {
                     this._jumping = false;
                     this._counter = 0;
                 }
-                bump.hit(this._playerAnimated, tiles[i], true, false, false)
+                bump.hit(this._playerAnimated, tiles[i], true)
             }
     
 
@@ -83,18 +81,31 @@ Player.prototype.move = function(bump, tiles) {
         else {
             this._yVelocity = -7.5;
             this._counter++;
+            
+            for(let  i = 0; i < tiles.length-1; i++) {
+                if(bump.hit(this._playerStill, tiles[i], true) == "top") {
+                    this._counter = 0;
+                    this._jumping = false;
+                }
+                bump.hit(this._playerAnimated, tiles[i], true)
+            }
         }
     }
     
     else {
-        this._yVelocity = this._gravity;
+        
+            for(let  i = 0; i < tiles.length-1; i++) {
+
+                if(bump.hit(this._playerStill, tiles[i])) {
+                    this._yVelocity = 1;
+                }
+                else {
+                    this._yVelocity += this._gravity*0.1;
+                }
+            }
 
     }
     
-    
-
-    
-
 }
 
 Player.prototype.setAnchorStill = function(x,y) {
