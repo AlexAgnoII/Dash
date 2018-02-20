@@ -43,9 +43,8 @@ function setup() {
     player = new Player(loader.animID["stand"], runningAnimation()); //need to add sprite here. 
     player.setAnchorAnim(0.5,0.5);
     player.setAnchorStill(0.5,0.5);
-    scene.addtoPlayScene(player._playerStill, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
-    scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
-    
+
+    level._complete = true; //initially true  to prevent movement
     
     state = title;
     
@@ -79,10 +78,14 @@ function tutorial() {
 function play() {
     if(scene._playScene.visible == false) {
         scene.showScene(scene._playScene, true);
+        initialPlayer();
         
         level.currentLevelContainer.visible = true;
         charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
-            
+            charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
+            charm.scale(player._playerStill, 1, 1,  5).onComplete = () => {
+                level._complete = false;
+            }
         }
     }
     
@@ -99,6 +102,12 @@ function end() {
         charm.fadeIn(scene._endScene, 30);
         
     }
+}
+
+function initialPlayer() {
+    scene.addtoPlayScene(player._playerStill, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
+    scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
+    player._playerStill.scale.set(0,0);
 }
 
 
@@ -221,9 +230,11 @@ function changeLevel(next) {
     console.log("Next level: " + next);
     
 
-    //Hide current level
+    //Hide current level (make it false)
+    level.currentLevelContainer.visible = false;
     
     //reset current level
+    level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_CLOSED];
     
     //if max level
     if(next == level._maxLevel) {
