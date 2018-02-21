@@ -45,7 +45,6 @@ Level.prototype.generateLevels = function(loader) {
                     rect.drawRect(xReal, yReal, size, size);
                     rect.endFill();
                     container.addChild(rect);
-                        //this._playWall.push(rect);
                 }
 
                 yReal+= size;

@@ -310,7 +310,218 @@
             "y":150
         }
     },
-    "level_3":{},
+    "level_3":{
+        "1":
+        {
+            "name": "big_rectangle_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":100, 
+            "y":700
+        },
+        "2":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":193, 
+            "y":720
+        },
+        "3":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":219, 
+            "y":720
+        },
+        "4":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":245, 
+            "y":720
+        },
+        "5":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":271, 
+            "y":720
+        },
+        "6":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":297, 
+            "y":720
+        },
+        "7":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":323, 
+            "y":720
+        },
+        "8":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":349, 
+            "y":720
+        },
+        "9":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":375, 
+            "y":720
+        },
+        "10":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":401, 
+            "y":720
+        },
+        "11":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":427, 
+            "y":720
+        },
+        "12":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":453, 
+            "y":720
+        },
+        "13":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":479, 
+            "y":720
+        },
+        "14":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":505, 
+            "y":720
+        },
+        "15":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":531, 
+            "y":720
+        },
+        "16":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":557, 
+            "y":720
+        },
+        "17":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":583, 
+            "y":720
+        },
+        "18":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":609, 
+            "y":720
+        },
+        "20":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":635, 
+            "y":720
+        },
+        "21":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":661, 
+            "y":720
+        },
+        "22":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":687, 
+            "y":720
+        },
+        
+        "23":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":713, 
+            "y":720
+        },
+        "24":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":739, 
+            "y":720
+        },
+        "25":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":765, 
+            "y":720
+        },
+
+        "player":
+        {
+            "name": "player",
+            "id":"none",
+            "type": "none",
+            "x":65, 
+            "y":642
+        },
+        "door":
+        {
+            "name": "door0001.png",
+            "id":"dashId",
+            "type": "door",
+            "x":280, 
+            "y":150
+        }
+    },
     "level_4":{},
     "level_5":{}
 }
