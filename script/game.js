@@ -47,6 +47,9 @@ function setup() {
 
     level._complete = true; //initially true  to prevent movement
     
+    /*REMOVE WHEN DEVELOPMENT IS DONE*/
+    level.currentLevel = 2;
+    
     state = title;
     
     
@@ -241,7 +244,7 @@ function onHit() {
     
     //hit dangerous tiles (once hit game over!)
     if(level.currentDangerTiles.length > 0) {
-        console.log("Danger!")
+        //console.log("Danger!")
         
         for(let i = 0; i < level.currentDangerTiles.length; i++) {
             if(bump.hit(player._playerStill, level.currentDangerTiles[i])) {
@@ -254,7 +257,7 @@ function onHit() {
         }
     }
     else {
-        console.log("No danger!")
+       //console.log("No danger!")
     }
     
     //Hit tiles

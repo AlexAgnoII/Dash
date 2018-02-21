@@ -108,7 +108,8 @@ Player.prototype.move = function(bump, tiles) {
                         this._yVelocity = 3; //originally 1
                     }
                     else {
-                        this._yVelocity += this._gravity*0.1;
+                        //ORIGINally *0.1
+                        this._yVelocity += this._gravity*0.3;
                     }
                 }
         }
@@ -123,8 +124,8 @@ Player.prototype.move = function(bump, tiles) {
         }
     }
 
-//    console.log("yVel: " + this._yVelocity);
-//    console.log("xVel: " + this._xVelocity);
+    console.log("yVel: " + this._yVelocity);
+    console.log("xVel: " + this._xVelocity);
 
     
 //    console.log(player._playerStill.y)

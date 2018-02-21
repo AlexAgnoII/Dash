@@ -504,6 +504,14 @@
             "x":765, 
             "y":720
         },
+        "26":
+        {
+            "name": "big_vertical_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":350, 
+            "y":580
+        },
 
         "player":
         {
