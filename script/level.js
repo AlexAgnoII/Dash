@@ -156,3 +156,12 @@ Object.defineProperty(Level.prototype, "currentLevelPlayerLoc", {
         return this._playerLocations[this._currentLevel];
     }
 })
+
+Object.defineProperty(Level.prototype, "currentDangerTiles", {
+    set: function(test) {
+        console.log("Current loc: " + test);
+    },
+    get: function(){
+        return this._dangerList[this._currentLevel];
+    }
+})

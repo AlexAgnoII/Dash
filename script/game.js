@@ -11,6 +11,7 @@ let scene;
 let state;
 let level;
 let player;
+let stop = false;
 
 
 let charm = new Charm(PIXI);
@@ -90,7 +91,29 @@ function play() {
     }
     
     player.move(bump, level.currentThingsList); //makes the player move.
-    onHit();
+    
+    if(player._dead == false)
+        onHit();
+    else if(!stop){
+        if(player._playerStill.scale.x < 0) {
+            endGameDeath(-1);
+        }
+        else {
+            endGameDeath(1);
+        }
+    }
+}
+
+function endGameDeath(pow) {
+    stop = true;
+    charm.scale(player._playerStill, (1.5*pow), 1.5, 10).onComplete = () => charm.scale(player._playerStill, 0,0, 100).onComplete = () => {
+        //hide current level
+        charm.fadeOut(level.currentLevelContainer, 15).onComplete = () => {
+            level.currentLevelContainer.visible = false;
+            scene.showScene(scene._playScene, false);
+            state = end;
+        };
+    }
 }
 
 function end() {
@@ -98,7 +121,7 @@ function end() {
     console.log(scene._endScene.visible)
     if(scene._endScene.visible == false) {
         scene.showScene(scene._endScene, true);
-        scene.changeEndMessage(win, loader);
+        scene.changeEndMessage(player._dead, loader);
         charm.fadeIn(scene._endScene, 30);
         
     }
@@ -153,15 +176,18 @@ document.body.onkeyup = function(e){
                      }
 
                  }
-                
-//                 //end        
-//                 else {
-//                    charm.fadeOut(scene._endScene, 30).onComplete = () => {
-//                        scene.showScene(scene._endScene, false);
-//                        state = title;
-//                    }
-//                   
-//                 }
+                 //end        
+                 else if (state == end){
+                    charm.fadeOut(scene._endScene, 30).onComplete = () => {
+                        scene.showScene(scene._endScene, false);
+                        player._dead = false;
+                        stop = false;
+                        player._playerStill.rotation = 0;
+                        level.currentLevel = 0;
+                        state = title;
+                    }
+                   
+                 }
                 break;
         case 39: 
         case 37:player.still(); break;
@@ -214,6 +240,22 @@ function onHit() {
     
     
     //hit dangerous tiles (once hit game over!)
+    if(level.currentDangerTiles.length > 0) {
+        console.log("Danger!")
+        
+        for(let i = 0; i < level.currentDangerTiles.length; i++) {
+            if(bump.hit(player._playerStill, level.currentDangerTiles[i])) {
+                console.log("DEATH")
+                player.still();
+                level._complete = true;
+                player._dead = true;
+                break;
+            }
+        }
+    }
+    else {
+        console.log("No danger!")
+    }
     
     //Hit tiles
     //console.log(level.currentLevel)

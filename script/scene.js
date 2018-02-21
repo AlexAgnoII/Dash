@@ -219,11 +219,11 @@ Scene.prototype.showScene = function(aScene, show) {
     aScene.visible = show;
 }
 
-Scene.prototype.changeEndMessage = function(win, loader) {
+Scene.prototype.changeEndMessage = function(death, loader) {
     console.log(this._endMessage.texture)
     console.log(loader._id[loader.ASSET_GAME_OVER])
     console.log(loader._id[loader.ASSET_YOU_WIN])
-    if(win) {
+    if(!death) {
         this._endMessage.texture = loader.atlasID[loader.ASSET_YOU_WIN];
     }
     
