@@ -509,10 +509,37 @@
             "name": "big_vertical_tile",
             "id":"tileId",
             "type": "tile",
-            "x":350, 
-            "y":580
+            "x":300, 
+            "y":550
+        },
+        
+        "27":
+        {
+            "name": "big_vertical_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":450, 
+            "y":410
+        },
+        
+        "28":
+        {
+            "name": "big_vertical_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":600, 
+            "y":290
         },
 
+        "29":
+        {
+            "name": "big_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":720, 
+            "y":178
+        },
+        
         "player":
         {
             "name": "player",
@@ -526,8 +553,8 @@
             "name": "door0001.png",
             "id":"dashId",
             "type": "door",
-            "x":280, 
-            "y":150
+            "x":725, 
+            "y":100
         }
     },
     "level_4":{},

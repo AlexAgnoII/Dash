@@ -41,7 +41,7 @@ Level.prototype.generateLevels = function(loader) {
                    y == 0 || (y == size*2 - 1)) {
                     let rect = new PIXI.Graphics();
                     rect.beginFill(0,10);
-                    rect.alpha = 0;
+                    //rect.alpha = 0;
                     rect.drawRect(xReal, yReal, size, size);
                     rect.endFill();
                     container.addChild(rect);
