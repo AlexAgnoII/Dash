@@ -48,7 +48,7 @@ function setup() {
     level._complete = true; //initially true  to prevent movement
     
     /*REMOVE WHEN DEVELOPMENT IS DONE*/
-    level.currentLevel = 2;
+    level.currentLevel = 3;
     
     state = title;
     
