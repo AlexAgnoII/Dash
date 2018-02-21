@@ -47,9 +47,6 @@ function setup() {
 
     level._complete = true; //initially true  to prevent movement
     
-    /*REMOVE WHEN DEVELOPMENT IS DONE*/
-    level.currentLevel = 4;
-    
     state = title;
     
     
@@ -83,14 +80,7 @@ function play() {
     if(scene._playScene.visible == false) {
         scene.showScene(scene._playScene, true);
         startLevel();
-        
-//        level.currentLevelContainer.visible = true;
-//        charm.fadeIn(level.currentLevelContainer, 15).onComplete = () => {
-//            charm.scale(player._playerStill, 1.5, 1.5, 10).onComplete = () => 
-//            charm.scale(player._playerStill, 1, 1,  5).onComplete = () => {
-//                level._complete = false;
-//            }
-//        }
+
     }
     
     player.move(bump, level.currentThingsList); //makes the player move.
@@ -295,6 +285,7 @@ function changeLevel(next) {
     
     //if max level
     if(next == level._maxLevel) {
+        scene.showScene(scene._playScene, false);
         state = end;
     }
     else {
