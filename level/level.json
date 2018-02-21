@@ -858,6 +858,238 @@
             "x":65, 
             "y":650
         },
+        "1":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":35, 
+            "y":720
+        },
+        "2":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":61, 
+            "y":720
+        },
+        "3":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":87, 
+            "y":720
+        },
+        "4":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":113, 
+            "y":720
+        },
+        "5":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":139, 
+            "y":720
+        },
+        "6":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":165, 
+            "y":720
+        },
+        "7":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":191, 
+            "y":720
+        },
+        "8":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":217, 
+            "y":720
+        },
+        "9":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":243, 
+            "y":720
+        },
+        "10":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":269, 
+            "y":720
+        },
+        "11":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":295, 
+            "y":720
+        },
+        "12":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":321, 
+            "y":720
+        },
+        "13":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":347, 
+            "y":720
+        },
+        "14":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":373, 
+            "y":720
+        },
+        "15":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":399, 
+            "y":720
+        },
+        "16":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":425, 
+            "y":720
+        },
+        "17":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":451, 
+            "y":720
+        },
+        "18":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":477, 
+            "y":720
+        },
+        "19":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":503, 
+            "y":720
+        },
+        "20":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":529, 
+            "y":720
+        },
+        "21":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":555, 
+            "y":720
+        },
+        "22":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":581, 
+            "y":720
+        },
+        "23":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":607, 
+            "y":720
+        },
+        "24":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":633, 
+            "y":720
+        },
+        "25":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":659, 
+            "y":720
+        },
+        "26":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":685, 
+            "y":720
+        },
+        "27":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":711, 
+            "y":720
+        },
+        "28":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":737, 
+            "y":720
+        },
+        "29":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":763, 
+            "y":720
+        },
         "player":
         {
             "name": "player",
