@@ -1090,6 +1090,91 @@
             "x":763, 
             "y":720
         },
+        "30":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":400, 
+            "y":650
+        },
+        "31":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":700, 
+            "y":650
+        },
+        "32":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":760, 
+            "y":500
+        },
+
+        "33":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":480, 
+            "y":420
+        },
+
+        "34":
+        {
+            "name": "small_rectangle_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":210, 
+            "y":380
+        },
+        
+        "35":
+        {
+            "name": "spike0001.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":249, 
+            "y":340
+        },
+        "36":
+        {
+            "name": "spike0002.png",
+            "id":"dashId",
+            "type": "danger",
+            "x":480, 
+            "y":458 
+        },
+        "37":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":50, 
+            "y":230
+        },
+        
+        "38":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":380, 
+            "y":190
+        },
+        
+        "39":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":730, 
+            "y":195
+        },
         "player":
         {
             "name": "player",
@@ -1104,8 +1189,8 @@
             "name": "door0001.png",
             "id":"dashId",
             "type": "door",
-            "x":410, 
-            "y":100
+            "x":730, 
+            "y":160
         }
     }
 }
