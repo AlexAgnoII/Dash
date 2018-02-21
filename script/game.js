@@ -20,7 +20,7 @@ let bump = new Bump(PIXI);
 main();
 
 function setup() {
-    console.log("Setup time!");
+    //console.log("Setup time!");
     loader.atlasID = loader.DASH_ATLAS;
     loader.animID = loader.DASH_ANIMATION_ATLAS;
     loader.tileID = loader.DASH_TILE_ATLAS;
@@ -60,7 +60,7 @@ function gameLoop() {
 }
 
 function title() {
-    console.log("Title state")
+    //console.log("Title state")
 
     if(scene._titleScene.visible == false) {
         scene.showScene(scene._titleScene,true);
@@ -69,7 +69,7 @@ function title() {
 }
 
 function tutorial() {
-    console.log("tutorial state")
+    //console.log("tutorial state")
     if(scene._tutorialScene.visible == false) {
         scene.showScene(scene._tutorialScene, true);
         charm.fadeIn(scene._tutorialScene, 30);
@@ -110,8 +110,8 @@ function endGameDeath(pow) {
 }
 
 function end() {
-    console.log("End state")
-    console.log(scene._endScene.visible)
+//    console.log("End state")
+//    console.log(scene._endScene.visible)
     if(scene._endScene.visible == false) {
         scene.showScene(scene._endScene, true);
         scene.changeEndMessage(player._dead, loader);
@@ -121,7 +121,7 @@ function end() {
 }
 
 function startLevel() {
-    console.log("Real current level: " + level.currentLevel);
+    //console.log("Real current level: " + level.currentLevel);
     scene.addtoPlayScene(player._playerStill, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
     scene.addtoPlayScene(player._playerAnimated, level.currentLevelPlayerLoc[0],level.currentLevelPlayerLoc[1]);
     player._playerStill.scale.set(0,0);
@@ -153,7 +153,7 @@ function main() {
 document.body.onkeyup = function(e){
     switch(e.keyCode) {
         case 32: if(state == title) {
-                    console.log("STATE IS TITLE")
+                   // console.log("STATE IS TITLE")
 
                     charm.fadeOut(scene._titleScene, 30).onComplete = () => {
                         scene.showScene(scene._titleScene, false);
@@ -162,7 +162,7 @@ document.body.onkeyup = function(e){
                  }
         
                  else if(state == tutorial) {
-                     console.log("STATE IS TUTORIAL")
+                    // console.log("STATE IS TUTORIAL")
                      charm.fadeOut(scene._tutorialScene, 30).onComplete = () => {
                         scene.showScene(scene._tutorialScene, false); 
                         state = play;
@@ -202,7 +202,7 @@ document.body.onkeydown = function(e) {
                         level.currentDoor.texture = loader.atlasID[loader.ASSET_DOOR_OPEN]
 
                         let currentLevel = level.currentLevel;
-                        console.log("Current level: " + currentLevel);
+                        //console.log("Current level: " + currentLevel);
                         
                         if(player._playerStill.scale.x > 0)
                             scalePlayer(currentLevel+1,1); //proceed to next level
@@ -238,7 +238,7 @@ function onHit() {
         
         for(let i = 0; i < level.currentDangerTiles.length; i++) {
             if(bump.hit(player._playerStill, level.currentDangerTiles[i])) {
-                console.log("DEATH")
+                //console.log("DEATH")
                 player.still();
                 level._complete = true;
                 player._dead = true;
@@ -274,7 +274,7 @@ function scalePlayer(next, charge) {
 }
 
 function changeLevel(next) {
-    console.log("Next level: " + next);
+    //console.log("Next level: " + next);
     
 
     //Hide current level (make it false)

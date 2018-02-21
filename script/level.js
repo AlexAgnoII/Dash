@@ -21,7 +21,7 @@ function Level(data) {
 
 
 Level.prototype.generateLevels = function(loader) {
-    console.log(this._levelList);
+    //console.log(this._levelList);
     
     
     //Traverse levels.
@@ -59,7 +59,7 @@ Level.prototype.generateLevels = function(loader) {
         let things = [];
         let danger = [];
         for(let y in lvl) {
-            console.log(lvl[y])
+            //console.log(lvl[y])
             
             //if its none, its a player
             if(lvl[y].id == "none") {
@@ -104,11 +104,11 @@ Level.prototype.generateLevels = function(loader) {
         this._levelThingList.push(things);
         this._dangerList.push(danger);
     }
-    console.log(this._levelContainers);
-    console.log(this._levelThingList);
-    console.log(this._playerLocations);
-    console.log(this._doorList);
-    console.log(this._dangerList);
+//    console.log(this._levelContainers);
+//    console.log(this._levelThingList);
+//    console.log(this._playerLocations);
+//    console.log(this._doorList);
+//    console.log(this._dangerList);
 }
 
 Object.defineProperty(Level.prototype, "currentDoor", {

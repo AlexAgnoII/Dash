@@ -123,9 +123,9 @@ Player.prototype.move = function(bump, tiles) {
             player._playerStill.rotation += 0.1;
         }
     }
-
-    console.log("yVel: " + this._yVelocity);
-    console.log("xVel: " + this._xVelocity);
+//
+//    console.log("yVel: " + this._yVelocity);
+//    console.log("xVel: " + this._xVelocity);
 
     
 //    console.log(player._playerStill.y)
