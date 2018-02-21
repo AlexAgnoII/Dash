@@ -831,6 +831,33 @@
             "x":208, 
             "y":250
         },
+        "34":
+        {
+            "name": "player",
+            "id":"none",
+            "type": "none",
+            "x":65, 
+            "y":642
+        },
+
+        "35":
+        {
+            "name": "door0001.png",
+            "id":"dashId",
+            "type": "door",
+            "x":410, 
+            "y":100
+        }
+    },
+    "level_5":{
+        "0":
+        {
+            "name": "small_square_tile",
+            "id":"tileId",
+            "type": "tile",
+            "x":65, 
+            "y":650
+        },
         "player":
         {
             "name": "player",
@@ -848,6 +875,5 @@
             "x":410, 
             "y":100
         }
-    },
-    "level_5":{}
+    }
 }
