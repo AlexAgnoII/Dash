@@ -120,8 +120,8 @@ Player.prototype.move = function(bump, tiles) {
             this._counter = this._interval;
             this._jumping = true;
         }
-        console.log(this._word)
-        console.log(wordContainer)
+//        console.log(this._word)
+//        console.log(wordContainer)
     }
     else {
         

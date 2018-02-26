@@ -44,7 +44,7 @@ Level.prototype.generateLevels = function(loader) {
         let lvl = this._levelList[x];
         let things = [];
         let danger = [];
-        console.log(x);
+        //console.log(x);
         for(let y in lvl) {
             let lvlArr = lvl[y];
             for(let  i = 0; i < lvlArr.length; i++) {
@@ -54,7 +54,7 @@ Level.prototype.generateLevels = function(loader) {
                    //console.log("walls")
                     let rect = new PIXI.Graphics();
                     rect.beginFill(0,10);
-                    //rect.alpha = 0;
+                    rect.alpha = 0;
                     rect.drawRect(xReal, yReal, size, size);
                     rect.endFill();
                     container.addChild(rect);
@@ -106,7 +106,7 @@ Level.prototype.generateLevels = function(loader) {
                 }
 
                 if(sprite != null) {
-                    console.log("placed!")
+                    //console.log("placed!")
                     sprite.position.set(xReal, yReal);
                     sprite.anchor.set(0.5,0.5);
                     container.addChild(sprite);
@@ -123,11 +123,11 @@ Level.prototype.generateLevels = function(loader) {
         this._dangerList.push(danger);
     }
     
-    console.log(this._levelContainers)
-    console.log( this._levelThingList)
-    console.log(this._dangerList)
-    console.log(this._doorList)
-    console.log(this._playerLocations)
+//    console.log(this._levelContainers)
+//    console.log( this._levelThingList)
+//    console.log(this._dangerList)
+//    console.log(this._doorList)
+//    console.log(this._playerLocations)
     
     
 }

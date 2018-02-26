@@ -47,10 +47,6 @@ function setup() {
     player.setAnchorStill(0.5,0.5);
 
     level._complete = true; //initially true  to prevent movement
-    
-    //testing
-    level._currentLevel = 3;
-    
 
     state = title;
     playArea._app.ticker.add(delta => gameLoop(delta));
@@ -317,7 +313,7 @@ function getLevels() {
     })
     .done(function(data) {
         level = new Level(data);
-        console.log(data)
+        //console.log(data)
     })
 }
 
