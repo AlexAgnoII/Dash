@@ -10,7 +10,7 @@ function Player(playerStill, playerAnimated) {
     this._xVelocity = 0;
     this._yVelocity = 0;
     this._speed = 5;
-    this._interval = 30;
+    this._interval = 16;
     this._counter = 0;
     this._gravity = 0.5;
     this._hitTop = false;
@@ -143,23 +143,20 @@ Player.prototype.move = function(bump, tiles) {
                     this._hitTop = false;
                 }
                 else
-                    this._yVelocity = 3;
+                    this._yVelocity += this._gravity;
                 
             }
             else {
                 this._yVelocity = -7.5;
                 this._counter++;
                 this._word = "jumping";
-                for(let  i = 0; i < tiles.length; i++) {
-                    if(bump.hit(this._playerStill, tiles[i], true) == "top") {
-                        this._counter = this._interval;
-                        this._hitTop = true;
-                        //console.log("top")
 
-                    }
-                    bump.hit(this._playerAnimated, tiles[i], true)
+                if(wordContainer.includes("top")) {
+                    this._counter = this._interval;
+                    this._hitTop = true;
+                    console.log("top")
                 }
-                
+
                 if(this._counter == this._interval) {
                     this._word = "none";
                 }
@@ -176,7 +173,8 @@ Player.prototype.move = function(bump, tiles) {
             this._counter = this._interval;
             this._jumping = true;
         }
-
+        console.log(this._word)
+        console.log(wordContainer)
     }
     else {
         
