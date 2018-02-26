@@ -126,9 +126,9 @@ Scene.prototype.showScene = function(aScene, show) {
 }
 
 Scene.prototype.changeEndMessage = function(death, loader) {
-    console.log(this._endMessage.texture)
-    console.log(loader._id[loader.ASSET_GAME_OVER])
-    console.log(loader._id[loader.ASSET_YOU_WIN])
+//    console.log(this._endMessage.texture)
+//    console.log(loader._id[loader.ASSET_GAME_OVER])
+//    console.log(loader._id[loader.ASSET_YOU_WIN])
     if(!death) {
         this._endMessage.texture = loader.atlasID[loader.ASSET_YOU_WIN];
     }
