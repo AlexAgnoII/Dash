@@ -49,7 +49,7 @@ function setup() {
     level._complete = true; //initially true  to prevent movement
     
     //testing
-    level._currentLevel = 2;
+    level._currentLevel = 3;
     
 
     state = title;
