@@ -10,11 +10,12 @@ function Player(playerStill, playerAnimated) {
     this._xVelocity = 0;
     this._yVelocity = 0;
     this._speed = 5;
-    this._interval = 16;
+    this._interval = 30;
     this._counter = 0;
     this._gravity = 0.5;
     this._hitTop = false;
     this._dead = false;
+    this._word = "none";
 }
 
 
@@ -61,6 +62,78 @@ Player.prototype.move = function(bump, tiles) {
 
         //console.log(tiles.length);
 
+//        if(this._jumping) {
+//
+//            if(this._counter == this._interval) {
+//
+//                if(this._hitTop) {
+//                    this._yVelocity = 5;
+//                    this._hitTop = false;
+//                }
+//                else
+//                    this._yVelocity += this._gravity;
+//
+//
+//                for(let  i = 0; i < tiles.length; i++) {
+//                    if(bump.hit(this._playerStill, tiles[i], true) == "bottom") {
+//                        this._jumping = false;
+//                        this._counter = 0;
+//                    }
+//                    bump.hit(this._playerAnimated, tiles[i], true)
+//                }
+//
+//
+//            }
+//
+//            else {
+//                this._yVelocity = -7.5;
+//                this._counter++;
+//
+//                for(let  i = 0; i < tiles.length; i++) {
+//                    if(bump.hit(this._playerStill, tiles[i], true) == "top") {
+//                        this._counter = this._interval;
+//                        this._hitTop = true;
+//                        //console.log("top")
+//
+//                    }
+//                    bump.hit(this._playerAnimated, tiles[i], true)
+//                }
+//            }
+//        }
+//
+//        else {
+//
+//                for(let  i = 0; i < tiles.length; i++) {
+//                    if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
+//                        //console.log("constant")
+//                        this._yVelocity = 3; //originally 1
+//                    }
+//                    else {
+//                        //ORIGINally *0.1
+//                        this._yVelocity += this._gravity*0.3;
+//                    }
+//                }
+//        }
+        
+        let wordContainer = [];
+        for(let i = 0 ; i < tiles.length; i++) {
+            
+            let temp = bump.hit(this._playerStill, tiles[i], true);
+            bump.hit(this._playerAnimated, tiles[i], true);
+            
+            wordContainer.push(temp);
+        }
+        
+        if(wordContainer.includes("bottom")) {
+            //console.log("has bottom!")
+            this._word = "bottom";
+        }
+        else if(!this._jumping) {
+            this._word = "none";
+        }
+
+        
+        //jumping!
         if(this._jumping) {
 
             if(this._counter == this._interval) {
@@ -70,24 +143,13 @@ Player.prototype.move = function(bump, tiles) {
                     this._hitTop = false;
                 }
                 else
-                    this._yVelocity += this._gravity;
-
-
-                for(let  i = 0; i < tiles.length; i++) {
-                    if(bump.hit(this._playerStill, tiles[i], true) == "bottom") {
-                        this._jumping = false;
-                        this._counter = 0;
-                    }
-                    bump.hit(this._playerAnimated, tiles[i], true)
-                }
-
-
+                    this._yVelocity = 3;
+                
             }
-
             else {
                 this._yVelocity = -7.5;
                 this._counter++;
-
+                this._word = "jumping";
                 for(let  i = 0; i < tiles.length; i++) {
                     if(bump.hit(this._playerStill, tiles[i], true) == "top") {
                         this._counter = this._interval;
@@ -97,22 +159,24 @@ Player.prototype.move = function(bump, tiles) {
                     }
                     bump.hit(this._playerAnimated, tiles[i], true)
                 }
+                
+                if(this._counter == this._interval) {
+                    this._word = "none";
+                }
             }
         }
-
-        else {
-
-                for(let  i = 0; i < tiles.length; i++) {
-                    if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
-                        //console.log("constant")
-                        this._yVelocity = 3; //originally 1
-                    }
-                    else {
-                        //ORIGINally *0.1
-                        this._yVelocity += this._gravity*0.3;
-                    }
-                }
+        
+        if(this._word == "bottom") {
+            this._jumping = false;
+            this._counter = 0;
+            this._yVelocity = 3;
         }
+        //free fall (not jumping)
+        else if(this._jumping == false){
+            this._counter = this._interval;
+            this._jumping = true;
+        }
+
     }
     else {
         

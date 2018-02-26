@@ -1,6 +1,7 @@
 "use strict";
 /*
 Game Logic "Controller" Here.
+Author: Alexander H. Agno II
 */
 
 
@@ -252,11 +253,8 @@ function onHit() {
     
     //Hit tiles
     //console.log(level.currentLevel)
-    bump.hit(player._playerStill, level.currentThingsList, true);
-    bump.hit(player._playerAnimated, level.currentThingsList, true);
-
-    
-    
+//    bump.hit(player._playerStill, level.currentThingsList, true);
+//    bump.hit(player._playerAnimated, level.currentThingsList, true);
 }
 
 function scalePlayer(next, charge) {
