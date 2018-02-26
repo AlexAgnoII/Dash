@@ -61,59 +61,6 @@ Player.prototype.move = function(bump, tiles) {
         this._playerAnimated.y = this._playerStill.y;
 
         //console.log(tiles.length);
-
-//        if(this._jumping) {
-//
-//            if(this._counter == this._interval) {
-//
-//                if(this._hitTop) {
-//                    this._yVelocity = 5;
-//                    this._hitTop = false;
-//                }
-//                else
-//                    this._yVelocity += this._gravity;
-//
-//
-//                for(let  i = 0; i < tiles.length; i++) {
-//                    if(bump.hit(this._playerStill, tiles[i], true) == "bottom") {
-//                        this._jumping = false;
-//                        this._counter = 0;
-//                    }
-//                    bump.hit(this._playerAnimated, tiles[i], true)
-//                }
-//
-//
-//            }
-//
-//            else {
-//                this._yVelocity = -7.5;
-//                this._counter++;
-//
-//                for(let  i = 0; i < tiles.length; i++) {
-//                    if(bump.hit(this._playerStill, tiles[i], true) == "top") {
-//                        this._counter = this._interval;
-//                        this._hitTop = true;
-//                        //console.log("top")
-//
-//                    }
-//                    bump.hit(this._playerAnimated, tiles[i], true)
-//                }
-//            }
-//        }
-//
-//        else {
-//
-//                for(let  i = 0; i < tiles.length; i++) {
-//                    if(bump.hit(this._playerStill, tiles[i],true) == "bottom") {
-//                        //console.log("constant")
-//                        this._yVelocity = 3; //originally 1
-//                    }
-//                    else {
-//                        //ORIGINally *0.1
-//                        this._yVelocity += this._gravity*0.3;
-//                    }
-//                }
-//        }
         
         let wordContainer = [];
         for(let i = 0 ; i < tiles.length; i++) {

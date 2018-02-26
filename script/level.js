@@ -24,91 +24,200 @@ Level.prototype.generateLevels = function(loader) {
     //console.log(this._levelList);
     
     
-    //Traverse levels.
+//    //Traverse levels.
+//    for(let x in this._levelList) {
+//        
+//        //generate container
+//        let container = new PIXI.Container();
+//        let size = 20;
+//        let xReal = 0;
+//        let yReal;
+//        for(let  x = 0; x < size*2; x++) {
+//            yReal = 0;
+//                
+//            for(let y = 0; y < size*2; y++) {
+//                //
+//                if(x == 0 || (x == size*2 - 1 ) ||
+//                   y == 0 || (y == size*2 - 1)) {
+//                    let rect = new PIXI.Graphics();
+//                    rect.beginFill(0,10);
+//                    rect.alpha = 0;
+//                    rect.drawRect(xReal, yReal, size, size);
+//                    rect.endFill();
+//                    container.addChild(rect);
+//                }
+//
+//                yReal+= size;
+//            }
+//                
+//            xReal += size;
+//        }
+//        
+//
+//        //World object.
+//        let lvl = this._levelList[x];
+//        let things = [];
+//        let danger = [];
+//        for(let y in lvl) {
+//            //console.log(lvl[y])
+//            
+//            //if its none, its a player
+//            if(lvl[y].id == "none") {
+//                this._playerLocations.push([lvl[y].x, lvl[y].y])
+//            }
+//            
+//            //Else, it's either a tile OR an 
+//            else {
+//                let id;
+//                //from dashId atlas
+//                if(lvl[y].id == "dashId") {
+//                    id = loader.atlasID;
+//                }
+//                
+//                //from tile atlas
+//                else {
+//                    id = loader.tileID;
+//                }
+//                  
+//                let sprite = new PIXI.Sprite(id[lvl[y].name]);
+//                sprite.position.set(lvl[y].x, lvl[y].y);
+//                sprite.anchor.set(0.5,0.5);
+//                container.addChild(sprite);
+//                
+//                //For tiles:
+//                if(lvl[y].type == "tile")
+//                    things.push(sprite);
+//                
+//                //For dangerous tiles:
+//                else if(lvl[y].type == "danger")
+//                    danger.push(sprite);
+//                //For doors:
+//                else {
+//                    this._doorList.push(sprite);
+//                }
+//                
+//            }
+//
+//        }
+//        
+//        this._levelContainers.push(container);
+//        this._levelThingList.push(things);
+//        this._dangerList.push(danger);
+//    }
+//    console.log(this._levelContainers);
+//    console.log(this._levelThingList);
+//    console.log(this._playerLocations);
+//    console.log(this._doorList);
+//    console.log(this._dangerList);
+    
+    //Legend: 
+    //1 = border walls
+    //2 = player location
+    //3 = tile (big_square)
+    //4 = tile (big rectangle)
+    //5 = tile (big vertical)
+    //6 = tile (small_square)
+    //7 = tile (small rectangle)
+    //9 = door
     for(let x in this._levelList) {
         
         //generate container
         let container = new PIXI.Container();
         let size = 20;
         let xReal = 0;
-        let yReal;
-        for(let  x = 0; x < size*2; x++) {
-            yReal = 0;
+        let yReal = 0;
+        
+
+//        //World object.
+        let lvl = this._levelList[x];
+        let things = [];
+        let danger = [];
+        console.log(x);
+        for(let y in lvl) {
+            let lvlArr = lvl[y];
+            for(let  i = 0; i < lvlArr.length; i++) {
+                let sprite = null;
                 
-            for(let y = 0; y < size*2; y++) {
-                //
-                if(x == 0 || (x == size*2 - 1 ) ||
-                   y == 0 || (y == size*2 - 1)) {
+                if(1 == lvlArr[i]){
+                   //console.log("walls")
                     let rect = new PIXI.Graphics();
                     rect.beginFill(0,10);
-                    //rect.alpha = 0;
+                    rect.alpha = 0;
                     rect.drawRect(xReal, yReal, size, size);
                     rect.endFill();
                     container.addChild(rect);
                 }
-
-                yReal+= size;
-            }
-                
-            xReal += size;
-        }
-        
-
-        //World object.
-        let lvl = this._levelList[x];
-        let things = [];
-        let danger = [];
-        for(let y in lvl) {
-            //console.log(lvl[y])
-            
-            //if its none, its a player
-            if(lvl[y].id == "none") {
-                this._playerLocations.push([lvl[y].x, lvl[y].y])
-            }
-            
-            //Else, it's either a tile OR an 
-            else {
-                let id;
-                //from dashId atlas
-                if(lvl[y].id == "dashId") {
-                    id = loader.atlasID;
+                else if(2 == lvlArr[i]) {
+                    this._playerLocations.push([xReal, yReal]);
+                    sprite = null;
                 }
-                
-                //from tile atlas
-                else {
-                    id = loader.tileID;
-                }
-                  
-                let sprite = new PIXI.Sprite(id[lvl[y].name]);
-                sprite.position.set(lvl[y].x, lvl[y].y);
-                sprite.anchor.set(0.5,0.5);
-                container.addChild(sprite);
-                
-                //For tiles:
-                if(lvl[y].type == "tile")
+                else if(3 == lvlArr[i]) {
+                    //console.log("big_square")
+                    sprite = new PIXI.Sprite(loader.tileID["big_square_tile"]);
                     things.push(sprite);
-                
-                //For dangerous tiles:
-                else if(lvl[y].type == "danger")
-                    danger.push(sprite);
-                //For doors:
-                else {
+
+                }
+                else if(4 == lvlArr[i]) {
+                    ///console.log("big_rectangle")
+                    sprite = new PIXI.Sprite(loader.tileID["big_rectangle_tile"]);
+                    things.push(sprite);
+                }
+                else if(5 == lvlArr[i]) {
+                    //console.log("big_vertical")
+                    sprite = new PIXI.Sprite(loader.tileID["big_vertical_tile"]);
+                    things.push(sprite);
+                }
+                else if(6 == lvlArr[i]) {
+                    //console.log("small_square")
+                    sprite = new PIXI.Sprite(loader.tileID["small_square_tile"]);
+                    things.push(sprite);
+                }
+                else if(7 == lvlArr[i]) {
+                    //console.log("smalle_rectangle")
+                    sprite = new PIXI.Sprite(loader.tileID["small_rectangle_tile"]);
+                    things.push(sprite);
+                }
+                else if(8 == lvlArr[i]){
+                    //console.log("door")
+                    sprite = new PIXI.Sprite(loader.atlasID[loader.ASSET_DOOR_CLOSED]);
                     this._doorList.push(sprite);
                 }
-                
-            }
+                else if(9 == lvlArr[i]) {
+                    //console.log("spike facing up")
+                    sprite = new PIXI.Sprite(loader.atlasID[loader.ASSET_SPIKE_UP]);
+                    danger.push(sprite);
+                }
+                else if(10 == lvlArr[i]) {
+                    //console.log("spike facing down")
+                    sprite = new PIXI.Sprite(loader.atlasID[loader.ASSET_SPIKE_DOWN]);
+                    danger.push(sprite);
+                }
 
+                if(sprite != null) {
+                    console.log("placed!")
+                    sprite.position.set(xReal, yReal);
+                    sprite.anchor.set(0.5,0.5);
+                    container.addChild(sprite);
+                }
+
+                xReal += size;
+            }
+            xReal = 0;
+            yReal += size;
         }
-        
+    
         this._levelContainers.push(container);
         this._levelThingList.push(things);
         this._dangerList.push(danger);
     }
-//    console.log(this._levelContainers);
-//    console.log(this._levelThingList);
-//    console.log(this._playerLocations);
-//    console.log(this._doorList);
-//    console.log(this._dangerList);
+    
+    console.log(this._levelContainers)
+    console.log( this._levelThingList)
+    console.log(this._dangerList)
+    console.log(this._doorList)
+    console.log(this._playerLocations)
+    
+    
 }
 
 Object.defineProperty(Level.prototype, "currentDoor", {

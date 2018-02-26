@@ -48,9 +48,8 @@ function setup() {
 
     level._complete = true; //initially true  to prevent movement
     
+    /*Disabled for now*/
     state = title;
-    
-    
     playArea._app.ticker.add(delta => gameLoop(delta));
 }
 
@@ -83,7 +82,6 @@ function play() {
         startLevel();
 
     }
-    
     player.move(bump, level.currentThingsList); //makes the player move.
     
     if(player._dead == false)
@@ -250,11 +248,6 @@ function onHit() {
     else {
        //console.log("No danger!")
     }
-    
-    //Hit tiles
-    //console.log(level.currentLevel)
-//    bump.hit(player._playerStill, level.currentThingsList, true);
-//    bump.hit(player._playerAnimated, level.currentThingsList, true);
 }
 
 function scalePlayer(next, charge) {
@@ -313,13 +306,15 @@ function runningAnimation() {
     return running;
 }
 
+let LEVEL = /*"level/level.json"*/ "assets/new_levels.json"
 function getLevels() {
     $.ajax({
-        url: "level/level.json",
+        url: LEVEL,
         async: false
     })
     .done(function(data) {
         level = new Level(data);
+        console.log(data)
     })
 }
 
