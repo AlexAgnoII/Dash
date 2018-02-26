@@ -305,7 +305,7 @@ function runningAnimation() {
     return running;
 }
 
-let LEVEL = /*"level/level.json"*/ "assets/new_levels.json"
+let LEVEL = "assets/new_levels.json";
 function getLevels() {
     $.ajax({
         url: LEVEL,
