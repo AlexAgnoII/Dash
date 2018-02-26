@@ -48,7 +48,10 @@ function setup() {
 
     level._complete = true; //initially true  to prevent movement
     
-    /*Disabled for now*/
+    //testing
+    level._currentLevel = 0;
+    
+
     state = title;
     playArea._app.ticker.add(delta => gameLoop(delta));
 }

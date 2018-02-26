@@ -142,7 +142,7 @@ Level.prototype.generateLevels = function(loader) {
                    //console.log("walls")
                     let rect = new PIXI.Graphics();
                     rect.beginFill(0,10);
-                    rect.alpha = 0;
+                    //rect.alpha = 0;
                     rect.drawRect(xReal, yReal, size, size);
                     rect.endFill();
                     container.addChild(rect);
